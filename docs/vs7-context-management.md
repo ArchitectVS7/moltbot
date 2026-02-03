@@ -8,12 +8,12 @@ The VS7 context management system provides token-aware budget allocation for Ope
 
 ### Components
 
-| Component | File | Purpose |
-|-----------|------|---------|
-| `ContextBudgetManager` | `src/agents/context-budget.ts` | Token budget allocation |
-| `RollingSummarizer` | `src/agents/rolling-summary.ts` | Conversation summarization |
-| `SemanticHistoryRetriever` | `src/agents/semantic-history.ts` | Semantic retrieval |
-| `attempt.ts` | `src/agents/pi-embedded-runner/run/attempt.ts` | Main integration point |
+| Component | File | Purpose | Status |
+|-----------|------|---------|--------|
+| `ContextBudgetManager` | `src/agents/context-budget.ts` | Token budget allocation | Integrated |
+| `RollingSummarizer` | `src/agents/rolling-summary.ts` | Conversation summarization | Integrated |
+| `SemanticHistoryRetriever` | `src/agents/semantic-history.ts` | Semantic retrieval | Integrated |
+| `attempt.ts` | `src/agents/pi-embedded-runner/run/attempt.ts` | Main integration point | Updated |
 
 ### Budget Allocation
 
@@ -56,14 +56,14 @@ agents:
         responseRatio: 0.20
         minResponseTokens: 4096
       rollingSummary:
-        enabled: false          # Not yet integrated
-        windowSize: 5
-        summaryMaxTokens: 2000
-        triggerThreshold: 30000
+        enabled: true           # NEW: Now integrated
+        windowSize: 5           # Keep last 5 user turns verbatim
+        summaryMaxTokens: 2000  # Max tokens for summary text
+        triggerThreshold: 30000 # Summarize when history > 30k tokens
       semanticHistory:
-        enabled: false          # Not yet integrated
-        maxRetrievedChunks: 5
-        minRelevanceScore: 0.6
+        enabled: true           # NEW: Now integrated
+        maxRetrievedChunks: 5   # Max relevant chunks to retrieve
+        minRelevanceScore: 0.6  # Minimum similarity score
 ```
 
 ## How It Works
@@ -81,7 +81,26 @@ When `contextManagement.enabled === true`:
 - Bootstrap budget: 200,000 * 0.10 = 20,000 tokens
 - Character limit: 20,000 * 4 = 80,000 chars (per file)
 
-### 2. History Budget Enforcement
+### 2. Semantic History Retrieval (NEW)
+
+When `contextManagement.semanticHistory.enabled === true`:
+
+1. Get memory search manager for the current agent
+2. Search for relevant prior context using the current prompt as query
+3. Budget: Uses 30% of bootstrap budget for semantic history
+4. Retrieved chunks are injected into the system prompt via `extraSystemPrompt`
+5. Chunks are formatted with `<relevant-prior-context>` tags
+
+**Example output in system prompt:**
+```xml
+<relevant-prior-context>
+<context source="memory/2024-01-15.md" score="0.85">
+User discussed project architecture decisions...
+</context>
+</relevant-prior-context>
+```
+
+### 3. History Budget Enforcement
 
 After bootstrap files and system prompt are built:
 
@@ -90,7 +109,31 @@ After bootstrap files and system prompt are built:
 3. Compute final history budget: `base + reclaimed + reserve`
 4. Limit history to fit within budget while preserving recent turns
 
-### 3. Dynamic Reallocation
+### 4. Rolling Summarization (NEW)
+
+When `contextManagement.rollingSummary.enabled === true`:
+
+1. Check if history tokens exceed `triggerThreshold` (default: 30k)
+2. If triggered, get API key from model registry
+3. Split messages: keep last `windowSize` user turns (default: 5) verbatim
+4. Summarize older messages using the configured model
+5. Inject summary as a leading context message
+6. On failure, falls back to truncation without summary
+
+**Example summary injection:**
+```
+[Prior conversation summary - for context only, do not respond to this]
+
+<prior-conversation-summary>
+The user has been working on implementing a new authentication system.
+Key decisions made:
+- Using JWT tokens for session management
+- Storing refresh tokens in HTTP-only cookies
+...
+</prior-conversation-summary>
+```
+
+### 5. Dynamic Reallocation
 
 If system prompt or bootstrap use fewer tokens than budgeted, the unused allocation is reallocated to history:
 
@@ -106,45 +149,48 @@ historyBudget = base_history_budget
 ### `attempt.ts` Flow
 
 ```
-1. Check contextManagementEnabled early
+1. Check contextManagementEnabled early (line 193)
 2. If enabled: compute bootstrap budget from context window
 3. Pass maxCharsOverride to resolveBootstrapContextForRun()
-4. Build system prompt with (now budget-limited) context files
-5. Validate/sanitize session history
-6. If enabled: limit history by tokens (preserving recent turns)
-7. Else: fallback to VS6 turn-based limiting
+4. If semanticHistory.enabled: retrieve relevant prior context
+5. Build system prompt with bootstrap + semantic history context
+6. Validate/sanitize session history
+7. If rollingSummary.enabled: summarize older messages
+8. Limit history by tokens (preserving recent turns)
+9. Inject rolling summary as leading context message
+10. Else: fallback to VS6 turn-based limiting
 ```
 
 ### Key Files Modified
 
 - `src/agents/bootstrap-files.ts`: Added `maxCharsOverride` parameter
-- `src/agents/pi-embedded-runner/run/attempt.ts`: Early budget computation
+- `src/agents/pi-embedded-runner/run/attempt.ts`:
+  - Early budget computation
+  - Semantic history retrieval integration
+  - Rolling summarization integration
 
-## Future Work
+## Verification Logging
 
-### Rolling Summarization (Not Yet Integrated)
-
-The `RollingSummarizer` class is implemented but not yet called in `attempt.ts`. When integrated:
-
-1. Keep last N turns verbatim (default: 5)
-2. Summarize older conversation into compact form
-3. Inject summary as system context
-
-### Semantic History Retrieval (Not Yet Integrated)
-
-The `SemanticHistoryRetriever` class is implemented but not yet called. When integrated:
-
-1. Use embeddings to find relevant past context
-2. Inject up to N relevant chunks (default: 5)
-3. Filter by minimum relevance score (default: 0.6)
-
-## Testing
-
-Verify context management is working by checking log output:
-
+### Bootstrap Budget
 ```
 context management: bootstrap budget=20000 tokens, maxChars=80000
-context management: contextWindow=200000 systemPrompt=8500 bootstrap=3200 historyBudget=110300 messagesIn=47 messagesOut=32
+```
+
+### Semantic History
+```
+semantic history: retrieved 3 chunks, 1500 tokens
+```
+
+### Rolling Summary
+```
+rolling summary: triggering summarization for 47 messages
+rolling summary: summarized 35 messages, kept 12, totalTokens=8500
+rolling summary: injected summary as leading context message
+```
+
+### Final Stats
+```
+context management: contextWindow=200000 systemPrompt=8500 bootstrap=3200 historyBudget=110300 messagesIn=47 messagesOut=12 (with rolling summary)
 ```
 
 ## Comparison: VS6 vs VS7
@@ -156,3 +202,27 @@ context management: contextWindow=200000 systemPrompt=8500 bootstrap=3200 histor
 | Budget allocation | None | Ratio-based |
 | Unused budget | Wasted | Reallocated to history |
 | Model awareness | No | Yes (uses contextWindow) |
+| Rolling summarization | No | Yes (optional) |
+| Semantic history | No | Yes (optional) |
+
+## Dependencies
+
+### Semantic History
+- Requires memory search to be configured (`memorySearch.enabled: true`)
+- Uses existing memory index with embeddings
+- No additional API calls required (uses pre-computed embeddings)
+
+### Rolling Summarization
+- Requires valid API key for the configured model
+- Makes LLM API calls to generate summaries
+- Adds latency when triggered (only on threshold breach)
+- Falls back gracefully if API key unavailable
+
+## Error Handling
+
+Both features are designed to fail gracefully:
+
+1. **Semantic History Failure**: Logs warning, continues without retrieved context
+2. **Rolling Summary Failure**: Logs warning, falls back to standard truncation
+3. **Missing API Key**: Logs warning, skips summarization
+4. **Memory Manager Unavailable**: Continues without semantic retrieval
