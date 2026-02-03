@@ -7,6 +7,7 @@ export type AgentsState = {
   agentsLoading: boolean;
   agentsError: string | null;
   agentsList: AgentsListResult | null;
+  agentsSelectedId: string | null;
 };
 
 export async function loadAgents(state: AgentsState) {
@@ -16,7 +17,14 @@ export async function loadAgents(state: AgentsState) {
   state.agentsError = null;
   try {
     const res = (await state.client.request("agents.list", {})) as AgentsListResult | undefined;
-    if (res) state.agentsList = res;
+    if (res) {
+      state.agentsList = res;
+      const selected = state.agentsSelectedId;
+      const known = res.agents.some((entry) => entry.id === selected);
+      if (!selected || !known) {
+        state.agentsSelectedId = res.defaultId ?? res.agents[0]?.id ?? null;
+      }
+    }
   } catch (err) {
     state.agentsError = String(err);
   } finally {
