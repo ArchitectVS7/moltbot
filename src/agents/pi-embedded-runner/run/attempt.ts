@@ -190,6 +190,25 @@ export async function runEmbeddedAttempt(
       workspaceDir: effectiveWorkspace,
     });
 
+    // VS7 context management: check early to compute bootstrap budget
+    const contextManagementEnabled =
+      params.config?.agents?.defaults?.contextManagement?.enabled ?? false;
+
+    // Compute bootstrap character limit based on budget (if context management enabled)
+    let bootstrapMaxCharsOverride: number | undefined;
+    if (contextManagementEnabled) {
+      const budgetManager = createBudgetManagerFromConfig(
+        params.config?.agents?.defaults?.contextManagement,
+      );
+      const contextWindow = params.model.contextWindow ?? 200_000;
+      const budget = budgetManager.computeBudget(contextWindow);
+      // Convert token budget to character limit (~4 chars/token)
+      bootstrapMaxCharsOverride = budget.bootstrap * 4;
+      log.debug(
+        `context management: bootstrap budget=${budget.bootstrap} tokens, maxChars=${bootstrapMaxCharsOverride}`,
+      );
+    }
+
     const sessionLabel = params.sessionKey ?? params.sessionId;
     const { bootstrapFiles: hookAdjustedBootstrapFiles, contextFiles } =
       await resolveBootstrapContextForRun({
@@ -198,6 +217,7 @@ export async function runEmbeddedAttempt(
         sessionKey: params.sessionKey,
         sessionId: params.sessionId,
         warn: makeBootstrapWarn({ sessionLabel, warn: (message) => log.warn(message) }),
+        maxCharsOverride: bootstrapMaxCharsOverride,
       });
     const workspaceNotes = hookAdjustedBootstrapFiles.some(
       (file) => file.name === DEFAULT_BOOTSTRAP_FILENAME && !file.missing,
@@ -551,12 +571,12 @@ export async function runEmbeddedAttempt(
           : validatedGemini;
 
         // VS7 context management: token-based limiting with budget allocation
-        const contextManagementEnabled =
-          params.config?.agents?.defaults?.contextManagement?.enabled ?? false;
+        // (contextManagementEnabled is defined earlier in the function for bootstrap budget computation)
 
         let limited: typeof validated;
         if (contextManagementEnabled) {
           // Use token-based history limiting with budget allocation
+          // Reuse budget manager - same config, same computation
           const budgetManager = createBudgetManagerFromConfig(
             params.config?.agents?.defaults?.contextManagement,
           );
