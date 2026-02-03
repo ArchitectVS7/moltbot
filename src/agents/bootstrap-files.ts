@@ -47,13 +47,21 @@ export async function resolveBootstrapContextForRun(params: {
   sessionId?: string;
   agentId?: string;
   warn?: (message: string) => void;
+  /**
+   * Override the per-file character limit for bootstrap files.
+   * When VS7 context management is enabled, this should be computed from
+   * the bootstrap token budget (bootstrapRatio * contextWindow * 4 chars/token).
+   * Falls back to resolveBootstrapMaxChars(config) if not specified.
+   */
+  maxCharsOverride?: number;
 }): Promise<{
   bootstrapFiles: WorkspaceBootstrapFile[];
   contextFiles: EmbeddedContextFile[];
 }> {
   const bootstrapFiles = await resolveBootstrapFilesForRun(params);
+  const maxChars = params.maxCharsOverride ?? resolveBootstrapMaxChars(params.config);
   const contextFiles = buildBootstrapContextFiles(bootstrapFiles, {
-    maxChars: resolveBootstrapMaxChars(params.config),
+    maxChars,
     warn: params.warn,
   });
   return { bootstrapFiles, contextFiles };

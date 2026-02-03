@@ -7,6 +7,7 @@ import os from "node:os";
 import type { EmbeddedRunAttemptParams, EmbeddedRunAttemptResult } from "./types.js";
 import { resolveHeartbeatPrompt } from "../../../auto-reply/heartbeat.js";
 import { resolveChannelCapabilities } from "../../../config/channel-capabilities.js";
+import { getMemorySearchManager } from "../../../memory/index.js";
 import { getMachineDisplayName } from "../../../infra/machine-name.js";
 import { MAX_IMAGE_BYTES } from "../../../media/constants.js";
 import { getGlobalHookRunner } from "../../../plugins/hook-runner-global.js";
@@ -28,6 +29,11 @@ import {
   resolveChannelMessageToolHints,
 } from "../../channel-tools.js";
 import { createBudgetManagerFromConfig, estimateTextTokens } from "../../context-budget.js";
+import { createRollingSummarizerFromConfig } from "../../rolling-summary.js";
+import {
+  createSemanticHistoryRetrieverFromConfig,
+  type MemorySearchProvider,
+} from "../../semantic-history.js";
 import { resolveOpenClawDocsPath } from "../../docs-path.js";
 import { isTimeoutError } from "../../failover-error.js";
 import { resolveModelAuthMode } from "../../model-auth.js";
@@ -190,6 +196,25 @@ export async function runEmbeddedAttempt(
       workspaceDir: effectiveWorkspace,
     });
 
+    // VS7 context management: check early to compute bootstrap budget
+    const contextManagementEnabled =
+      params.config?.agents?.defaults?.contextManagement?.enabled ?? false;
+
+    // Compute bootstrap character limit based on budget (if context management enabled)
+    let bootstrapMaxCharsOverride: number | undefined;
+    if (contextManagementEnabled) {
+      const budgetManager = createBudgetManagerFromConfig(
+        params.config?.agents?.defaults?.contextManagement,
+      );
+      const contextWindow = params.model.contextWindow ?? 200_000;
+      const budget = budgetManager.computeBudget(contextWindow);
+      // Convert token budget to character limit (~4 chars/token)
+      bootstrapMaxCharsOverride = budget.bootstrap * 4;
+      log.debug(
+        `context management: bootstrap budget=${budget.bootstrap} tokens, maxChars=${bootstrapMaxCharsOverride}`,
+      );
+    }
+
     const sessionLabel = params.sessionKey ?? params.sessionId;
     const { bootstrapFiles: hookAdjustedBootstrapFiles, contextFiles } =
       await resolveBootstrapContextForRun({
@@ -198,6 +223,7 @@ export async function runEmbeddedAttempt(
         sessionKey: params.sessionKey,
         sessionId: params.sessionId,
         warn: makeBootstrapWarn({ sessionLabel, warn: (message) => log.warn(message) }),
+        maxCharsOverride: bootstrapMaxCharsOverride,
       });
     const workspaceNotes = hookAdjustedBootstrapFiles.some(
       (file) => file.name === DEFAULT_BOOTSTRAP_FILENAME && !file.missing,
@@ -346,11 +372,71 @@ export async function runEmbeddedAttempt(
     });
     const ttsHint = params.config ? buildTtsSystemPromptHint(params.config) : undefined;
 
+    // VS7 semantic history retrieval: fetch relevant prior context
+    let semanticHistoryContext = "";
+    const semanticHistoryEnabled =
+      contextManagementEnabled &&
+      params.config?.agents?.defaults?.contextManagement?.semanticHistory?.enabled;
+
+    if (semanticHistoryEnabled && params.config) {
+      try {
+        const { manager: memoryManager } = await getMemorySearchManager({
+          cfg: params.config,
+          agentId: sessionAgentId,
+        });
+
+        if (memoryManager) {
+          const semanticRetriever = createSemanticHistoryRetrieverFromConfig(
+            params.config?.agents?.defaults?.contextManagement,
+          );
+          const contextWindow = params.model.contextWindow ?? 200_000;
+          const budgetManager = createBudgetManagerFromConfig(
+            params.config?.agents?.defaults?.contextManagement,
+          );
+          // Use a portion of the bootstrap budget for semantic history
+          const semanticBudget = Math.floor(budgetManager.computeBudget(contextWindow).bootstrap * 0.3);
+
+          // Create adapter for memory search provider interface
+          const memorySearchAdapter: MemorySearchProvider = {
+            search: async (query: string, limit?: number) => {
+              const results = await memoryManager.search(query, { maxResults: limit });
+              return results;
+            },
+          };
+
+          const semanticResult = await semanticRetriever.retrieve(
+            params.prompt,
+            memorySearchAdapter,
+            semanticBudget,
+          );
+
+          if (semanticResult.didRetrieve && semanticResult.contexts.length > 0) {
+            semanticHistoryContext = semanticRetriever.formatContextsForInjection(
+              semanticResult.contexts,
+            );
+            log.debug(
+              `semantic history: retrieved ${semanticResult.contexts.length} chunks, ` +
+                `${semanticResult.totalTokens} tokens`,
+            );
+          }
+        }
+      } catch (err) {
+        log.warn(
+          `semantic history retrieval failed: ${err instanceof Error ? err.message : String(err)}`,
+        );
+      }
+    }
+
+    // Combine extra system prompt with semantic history context
+    const effectiveExtraPrompt = [params.extraSystemPrompt, semanticHistoryContext]
+      .filter(Boolean)
+      .join("\n\n");
+
     const appendPrompt = buildEmbeddedSystemPrompt({
       workspaceDir: effectiveWorkspace,
       defaultThinkLevel: params.thinkLevel,
       reasoningLevel: params.reasoningLevel ?? "off",
-      extraSystemPrompt: params.extraSystemPrompt,
+      extraSystemPrompt: effectiveExtraPrompt || undefined,
       ownerNumbers: params.ownerNumbers,
       reasoningTagHint,
       heartbeatPrompt: isDefaultAgent
@@ -551,12 +637,14 @@ export async function runEmbeddedAttempt(
           : validatedGemini;
 
         // VS7 context management: token-based limiting with budget allocation
-        const contextManagementEnabled =
-          params.config?.agents?.defaults?.contextManagement?.enabled ?? false;
+        // (contextManagementEnabled is defined earlier in the function for bootstrap budget computation)
 
         let limited: typeof validated;
+        let rollingSummaryText = "";
+
         if (contextManagementEnabled) {
           // Use token-based history limiting with budget allocation
+          // Reuse budget manager - same config, same computation
           const budgetManager = createBudgetManagerFromConfig(
             params.config?.agents?.defaults?.contextManagement,
           );
@@ -576,14 +664,84 @@ export async function runEmbeddedAttempt(
           const windowTurns =
             params.config?.agents?.defaults?.contextManagement?.rollingSummary?.windowSize ?? 5;
 
-          limited = limitHistoryByTokens(validated, historyBudget, {
-            preserveRecentTurns: windowTurns,
-          });
+          // VS7 rolling summarization: summarize older messages if enabled
+          const rollingSummaryEnabled =
+            params.config?.agents?.defaults?.contextManagement?.rollingSummary?.enabled;
+
+          if (rollingSummaryEnabled) {
+            try {
+              const apiKey = await params.modelRegistry.getApiKey(params.model);
+              if (apiKey) {
+                const rollingSummarizer = createRollingSummarizerFromConfig(
+                  params.config?.agents?.defaults?.contextManagement,
+                );
+
+                if (rollingSummarizer.shouldSummarize(validated, historyBudget)) {
+                  log.debug(
+                    `rolling summary: triggering summarization for ${validated.length} messages`,
+                  );
+
+                  const summaryResult = await rollingSummarizer.buildContextWithSummary({
+                    messages: validated,
+                    budget: historyBudget,
+                    model: params.model,
+                    apiKey,
+                    signal: runAbortController.signal,
+                  });
+
+                  if (summaryResult.didSummarize) {
+                    // Replace validated with recent messages only
+                    limited = limitHistoryByTokens(summaryResult.recentMessages, historyBudget, {
+                      preserveRecentTurns: windowTurns,
+                    });
+                    rollingSummaryText = rollingSummarizer.formatSummaryForContext(
+                      summaryResult.summaryText,
+                    );
+
+                    log.debug(
+                      `rolling summary: summarized ${summaryResult.summarizedMessageCount} messages, ` +
+                        `kept ${summaryResult.recentMessages.length}, totalTokens=${summaryResult.totalTokens}`,
+                    );
+                  } else {
+                    // Summarization not needed or failed gracefully
+                    limited = limitHistoryByTokens(validated, historyBudget, {
+                      preserveRecentTurns: windowTurns,
+                    });
+                  }
+                } else {
+                  // Below threshold, no summarization needed
+                  limited = limitHistoryByTokens(validated, historyBudget, {
+                    preserveRecentTurns: windowTurns,
+                  });
+                }
+              } else {
+                log.warn("rolling summary: no API key available, skipping summarization");
+                limited = limitHistoryByTokens(validated, historyBudget, {
+                  preserveRecentTurns: windowTurns,
+                });
+              }
+            } catch (summaryErr) {
+              log.warn(
+                `rolling summary failed, falling back to truncation: ${
+                  summaryErr instanceof Error ? summaryErr.message : String(summaryErr)
+                }`,
+              );
+              limited = limitHistoryByTokens(validated, historyBudget, {
+                preserveRecentTurns: windowTurns,
+              });
+            }
+          } else {
+            // Rolling summary disabled, use standard token-based limiting
+            limited = limitHistoryByTokens(validated, historyBudget, {
+              preserveRecentTurns: windowTurns,
+            });
+          }
 
           log.debug(
             `context management: contextWindow=${contextWindow} systemPrompt=${systemPromptTokens} ` +
               `bootstrap=${bootstrapTokens} historyBudget=${historyBudget} ` +
-              `messagesIn=${validated.length} messagesOut=${limited.length}`,
+              `messagesIn=${validated.length} messagesOut=${limited.length}` +
+              (rollingSummaryText ? " (with rolling summary)" : ""),
           );
         } else {
           // Fallback to VS6 turn-based limiting
@@ -591,6 +749,17 @@ export async function runEmbeddedAttempt(
             validated,
             getDmHistoryLimitFromSessionKey(params.sessionKey, params.config),
           );
+        }
+
+        // If rolling summary was generated, prepend it as a synthetic context message
+        if (rollingSummaryText && limited.length > 0) {
+          const summaryMessage: AgentMessage = {
+            role: "user",
+            content: `[Prior conversation summary - for context only, do not respond to this]\n\n${rollingSummaryText}`,
+            timestamp: Date.now() - 1, // Slightly before current messages
+          };
+          limited = [summaryMessage, ...limited];
+          log.debug("rolling summary: injected summary as leading context message");
         }
 
         cacheTrace?.recordStage("session:limited", { messages: limited });
