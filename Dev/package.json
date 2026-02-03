@@ -1,0 +1,24 @@
+{
+  "name": "openclaw-context-management-uat",
+  "version": "1.0.0",
+  "description": "UAT test harness for OpenClaw VS7 context management system",
+  "type": "module",
+  "scripts": {
+    "test:manual": "tsx src/test-runner.ts",
+    "compare": "tsx src/compare-results.ts",
+    "build": "tsc"
+  },
+  "keywords": [
+    "openclaw",
+    "testing",
+    "uat",
+    "context-management"
+  ],
+  "author": "VS7",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}

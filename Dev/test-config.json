@@ -1,0 +1,7 @@
+{
+  "instanceName": "vs7",
+  "openclawBinary": "openclaw",
+  "sessionKey": "agent:main:main",
+  "outputDir": "./results",
+  "_comment": "Change instanceName to 'main' when testing main branch"
+}

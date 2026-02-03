@@ -1,0 +1,33 @@
+{
+  "id": "2.2",
+  "name": "Bug Fix with Context",
+  "category": "code-quality",
+  "description": "Tests ability to diagnose a bug, explain it, and fix it with tests",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Here's broken Python code:\n\n```python\ndef find_duplicates(arr):\n    duplicates = []\n    for i in range(len(arr)):\n        for j in range(i, len(arr)):\n            if arr[i] == arr[j]:\n                duplicates.append(arr[i])\n    return duplicates\n\nprint(find_duplicates([1, 2, 3, 2, 4, 3]))\n```\n\nWhat's wrong with this code?",
+      "expectedBehavior": "Identifies the bug: inner loop should start at i+1, not i (causes self-comparison and duplicates each match twice)"
+    },
+    {
+      "number": 2,
+      "prompt": "Fix it and add unit tests to prevent this bug.",
+      "expectedBehavior": "Corrects the range to start at i+1, adds tests including edge cases"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Bug diagnosed, fixed code provided, tests added",
+      "validation": "Check if fixed code has range(i+1, ...) and tests exist"
+    },
+    "contextRetained": {
+      "description": "Fix addresses the specific bug identified in Turn 1",
+      "validation": "Verify fix changes the exact line mentioned in diagnosis"
+    },
+    "codeWorks": {
+      "description": "Fixed code runs correctly and tests pass",
+      "validation": "Run: python <fixed_file> && python -m pytest <test_file>"
+    }
+  },
+  "estimatedDuration": "3-4 minutes"
+}

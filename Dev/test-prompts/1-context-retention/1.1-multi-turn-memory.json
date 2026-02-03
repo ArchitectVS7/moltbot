@@ -1,0 +1,38 @@
+{
+  "id": "1.1",
+  "name": "Multi-Turn Memory",
+  "category": "context-retention",
+  "description": "Tests if agent remembers project details across 3 turns without explicit memory storage",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "I'm working on a Python project called 'DataSync'. It syncs data between PostgreSQL and MongoDB.",
+      "expectedBehavior": "Acknowledges project info, may ask clarifying questions about sync direction or frequency"
+    },
+    {
+      "number": 2,
+      "prompt": "Create a config file for DataSync with connection strings.",
+      "expectedBehavior": "Creates config.py or config.json with PostgreSQL and MongoDB connection strings, uses project name 'DataSync' in comments or structure"
+    },
+    {
+      "number": 3,
+      "prompt": "Now write the main sync logic that uses that config.",
+      "expectedBehavior": "References config file from Turn 2, implements sync logic for PostgreSQL → MongoDB, imports config properly"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Config file + main sync logic file created",
+      "validation": "Check if both files exist and reference each other"
+    },
+    "contextRetained": {
+      "description": "Uses correct project name 'DataSync' and database types across all turns",
+      "validation": "Verify Turn 3 mentions config from Turn 2 and databases from Turn 1"
+    },
+    "codeWorks": {
+      "description": "Python syntax valid, imports correct, no obvious errors",
+      "validation": "Run: python -m py_compile <files>"
+    }
+  },
+  "estimatedDuration": "3-5 minutes"
+}

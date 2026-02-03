@@ -1,0 +1,38 @@
+{
+  "id": "1.2",
+  "name": "Context Switching",
+  "category": "context-retention",
+  "description": "Tests if agent can recall details from two separate topics when asked to combine them",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Explain how OAuth 2.0 authorization code flow works in 3-4 sentences.",
+      "expectedBehavior": "Concise explanation covering: authorization request, user consent, authorization code exchange, access token"
+    },
+    {
+      "number": 2,
+      "prompt": "Now explain WebSockets in 3-4 sentences.",
+      "expectedBehavior": "Concise explanation covering: persistent connection, bidirectional communication, real-time updates"
+    },
+    {
+      "number": 3,
+      "prompt": "How would you combine OAuth 2.0 and WebSockets for a real-time authenticated API? Reference your earlier explanations.",
+      "expectedBehavior": "Solution that explicitly references OAuth flow from Turn 1 and WebSocket behavior from Turn 2, describes token passing in WebSocket handshake"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "All three explanations provided",
+      "validation": "Check if Turn 3 provides architectural solution"
+    },
+    "contextRetained": {
+      "description": "Turn 3 references specific details from Turns 1 & 2",
+      "validation": "Look for mentions of 'authorization code', 'access token', 'persistent connection', or 'bidirectional' in Turn 3"
+    },
+    "codeWorks": {
+      "description": "N/A - conceptual explanation only",
+      "validation": "N/A"
+    }
+  },
+  "estimatedDuration": "2-3 minutes"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "2.1",
+  "name": "Multi-File Refactoring",
+  "category": "code-quality",
+  "description": "Tests ability to create multi-file project then refactor to TypeScript with proper types",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Create a Node.js Express API with these files:\n- server.js (entry point, starts server on port 3000)\n- routes/users.js (user CRUD endpoints: GET /users, POST /users, GET /users/:id)\n- middleware/auth.js (JWT validation middleware)\n- models/user.js (basic in-memory user array with id, name, email)\n\nKeep it simple, no database.",
+      "expectedBehavior": "Creates 4 files with basic Express structure, exports/imports correct, runnable"
+    },
+    {
+      "number": 2,
+      "prompt": "Now refactor this entire project to TypeScript with proper types. Create User interface, typed route handlers, and typed middleware.",
+      "expectedBehavior": "Converts all .js to .ts, adds interfaces, proper type annotations, updates imports, creates tsconfig.json"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "4 JavaScript files created, then converted to TypeScript with types",
+      "validation": "Check file count and extensions (.ts)"
+    },
+    "contextRetained": {
+      "description": "TypeScript version maintains same structure and functionality as JavaScript version",
+      "validation": "Compare route endpoints and middleware between versions"
+    },
+    "codeWorks": {
+      "description": "JavaScript version runs, TypeScript version compiles without errors",
+      "validation": "Run: node server.js (Turn 1), then: tsc --noEmit (Turn 2)"
+    }
+  },
+  "estimatedDuration": "5-7 minutes"
+}
