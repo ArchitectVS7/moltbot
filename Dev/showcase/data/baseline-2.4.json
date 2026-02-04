@@ -1,0 +1,2715 @@
+{
+  "tree": {
+    "name": "test-2.4",
+    "type": "folder",
+    "path": "",
+    "children": [
+      {
+        "name": "turn-1",
+        "type": "folder",
+        "path": "turn-1",
+        "children": [
+          {
+            "name": ".git",
+            "type": "folder",
+            "path": "turn-1/.git",
+            "children": [
+              {
+                "name": "branches",
+                "type": "folder",
+                "path": "turn-1/.git/branches",
+                "children": []
+              },
+              {
+                "name": "hooks",
+                "type": "folder",
+                "path": "turn-1/.git/hooks",
+                "children": [
+                  {
+                    "name": "applypatch-msg.sample",
+                    "type": "file",
+                    "path": "turn-1/.git/hooks/applypatch-msg.sample",
+                    "size": 478,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "commit-msg.sample",
+                    "type": "file",
+                    "path": "turn-1/.git/hooks/commit-msg.sample",
+                    "size": 896,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "fsmonitor-watchman.sample",
+                    "type": "file",
+                    "path": "turn-1/.git/hooks/fsmonitor-watchman.sample",
+                    "size": 4726,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "post-update.sample",
+                    "type": "file",
+                    "path": "turn-1/.git/hooks/post-update.sample",
+                    "size": 189,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-applypatch.sample",
+                    "type": "file",
+                    "path": "turn-1/.git/hooks/pre-applypatch.sample",
+                    "size": 424,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-commit.sample",
+                    "type": "file",
+                    "path": "turn-1/.git/hooks/pre-commit.sample",
+                    "size": 1643,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-merge-commit.sample",
+                    "type": "file",
+                    "path": "turn-1/.git/hooks/pre-merge-commit.sample",
+                    "size": 416,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-push.sample",
+                    "type": "file",
+                    "path": "turn-1/.git/hooks/pre-push.sample",
+                    "size": 1374,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-rebase.sample",
+                    "type": "file",
+                    "path": "turn-1/.git/hooks/pre-rebase.sample",
+                    "size": 4898,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-receive.sample",
+                    "type": "file",
+                    "path": "turn-1/.git/hooks/pre-receive.sample",
+                    "size": 544,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "prepare-commit-msg.sample",
+                    "type": "file",
+                    "path": "turn-1/.git/hooks/prepare-commit-msg.sample",
+                    "size": 1492,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "push-to-checkout.sample",
+                    "type": "file",
+                    "path": "turn-1/.git/hooks/push-to-checkout.sample",
+                    "size": 2783,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "update.sample",
+                    "type": "file",
+                    "path": "turn-1/.git/hooks/update.sample",
+                    "size": 3650,
+                    "extension": "sample"
+                  }
+                ]
+              },
+              {
+                "name": "info",
+                "type": "folder",
+                "path": "turn-1/.git/info",
+                "children": [
+                  {
+                    "name": "exclude",
+                    "type": "file",
+                    "path": "turn-1/.git/info/exclude",
+                    "size": 240,
+                    "extension": "txt"
+                  }
+                ]
+              },
+              {
+                "name": "objects",
+                "type": "folder",
+                "path": "turn-1/.git/objects",
+                "children": [
+                  {
+                    "name": "info",
+                    "type": "folder",
+                    "path": "turn-1/.git/objects/info",
+                    "children": []
+                  },
+                  {
+                    "name": "pack",
+                    "type": "folder",
+                    "path": "turn-1/.git/objects/pack",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "refs",
+                "type": "folder",
+                "path": "turn-1/.git/refs",
+                "children": [
+                  {
+                    "name": "heads",
+                    "type": "folder",
+                    "path": "turn-1/.git/refs/heads",
+                    "children": []
+                  },
+                  {
+                    "name": "tags",
+                    "type": "folder",
+                    "path": "turn-1/.git/refs/tags",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "config",
+                "type": "file",
+                "path": "turn-1/.git/config",
+                "size": 111,
+                "extension": "txt"
+              },
+              {
+                "name": "description",
+                "type": "file",
+                "path": "turn-1/.git/description",
+                "size": 73,
+                "extension": "txt"
+              },
+              {
+                "name": "HEAD",
+                "type": "file",
+                "path": "turn-1/.git/HEAD",
+                "size": 23,
+                "extension": "txt"
+              }
+            ]
+          },
+          {
+            "name": "auth-system",
+            "type": "folder",
+            "path": "turn-1/auth-system",
+            "children": [
+              {
+                "name": "migrations",
+                "type": "folder",
+                "path": "turn-1/auth-system/migrations",
+                "children": [
+                  {
+                    "name": "001_create_auth_tables.sql",
+                    "type": "file",
+                    "path": "turn-1/auth-system/migrations/001_create_auth_tables.sql",
+                    "size": 819,
+                    "extension": "sql"
+                  }
+                ]
+              },
+              {
+                "name": "src",
+                "type": "folder",
+                "path": "turn-1/auth-system/src",
+                "children": [
+                  {
+                    "name": "auth.service.ts",
+                    "type": "file",
+                    "path": "turn-1/auth-system/src/auth.service.ts",
+                    "size": 5033,
+                    "extension": "ts"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "datasync",
+            "type": "folder",
+            "path": "turn-1/datasync",
+            "children": [
+              {
+                "name": "__pycache__",
+                "type": "folder",
+                "path": "turn-1/datasync/__pycache__",
+                "children": [
+                  {
+                    "name": "__init__.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-1/datasync/__pycache__/__init__.cpython-313.pyc",
+                    "size": 293,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "__main__.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-1/datasync/__pycache__/__main__.cpython-313.pyc",
+                    "size": 5387,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "config_loader.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-1/datasync/__pycache__/config_loader.cpython-313.pyc",
+                    "size": 7971,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "config.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-1/datasync/__pycache__/config.cpython-313.pyc",
+                    "size": 5369,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "datasync.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-1/datasync/__pycache__/datasync.cpython-313.pyc",
+                    "size": 16134,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "db.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-1/datasync/__pycache__/db.cpython-313.pyc",
+                    "size": 8008,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "main.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-1/datasync/__pycache__/main.cpython-313.pyc",
+                    "size": 6327,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "sync_engine.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-1/datasync/__pycache__/sync_engine.cpython-313.pyc",
+                    "size": 20451,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "sync.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-1/datasync/__pycache__/sync.cpython-313.pyc",
+                    "size": 11546,
+                    "extension": "pyc"
+                  }
+                ]
+              },
+              {
+                "name": "datasync",
+                "type": "folder",
+                "path": "turn-1/datasync/datasync",
+                "children": [
+                  {
+                    "name": "__pycache__",
+                    "type": "folder",
+                    "path": "turn-1/datasync/datasync/__pycache__",
+                    "children": [
+                      {
+                        "name": "__init__.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-1/datasync/datasync/__pycache__/__init__.cpython-313.pyc",
+                        "size": 301,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "__main__.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-1/datasync/datasync/__pycache__/__main__.cpython-313.pyc",
+                        "size": 2344,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "config.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-1/datasync/datasync/__pycache__/config.cpython-313.pyc",
+                        "size": 8631,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "main.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-1/datasync/datasync/__pycache__/main.cpython-313.pyc",
+                        "size": 7126,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "sync_engine.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-1/datasync/datasync/__pycache__/sync_engine.cpython-313.pyc",
+                        "size": 20882,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "sync.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-1/datasync/datasync/__pycache__/sync.cpython-313.pyc",
+                        "size": 14282,
+                        "extension": "pyc"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "__init__.py",
+                    "type": "file",
+                    "path": "turn-1/datasync/datasync/__init__.py",
+                    "size": 80,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "__main__.py",
+                    "type": "file",
+                    "path": "turn-1/datasync/datasync/__main__.py",
+                    "size": 1369,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "config.py",
+                    "type": "file",
+                    "path": "turn-1/datasync/datasync/config.py",
+                    "size": 5109,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "main.py",
+                    "type": "file",
+                    "path": "turn-1/datasync/datasync/main.py",
+                    "size": 4312,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "sync_engine.py",
+                    "type": "file",
+                    "path": "turn-1/datasync/datasync/sync_engine.py",
+                    "size": 12955,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "sync.py",
+                    "type": "file",
+                    "path": "turn-1/datasync/datasync/sync.py",
+                    "size": 11824,
+                    "extension": "py"
+                  }
+                ]
+              },
+              {
+                "name": "__init__.py",
+                "type": "file",
+                "path": "turn-1/datasync/__init__.py",
+                "size": 84,
+                "extension": "py"
+              },
+              {
+                "name": "__main__.py",
+                "type": "file",
+                "path": "turn-1/datasync/__main__.py",
+                "size": 3223,
+                "extension": "py"
+              },
+              {
+                "name": ".env.example",
+                "type": "file",
+                "path": "turn-1/datasync/.env.example",
+                "size": 154,
+                "extension": "example"
+              },
+              {
+                "name": ".gitignore",
+                "type": "file",
+                "path": "turn-1/datasync/.gitignore",
+                "size": 127,
+                "extension": "txt"
+              },
+              {
+                "name": "config_loader.py",
+                "type": "file",
+                "path": "turn-1/datasync/config_loader.py",
+                "size": 4600,
+                "extension": "py"
+              },
+              {
+                "name": "config.py",
+                "type": "file",
+                "path": "turn-1/datasync/config.py",
+                "size": 3063,
+                "extension": "py"
+              },
+              {
+                "name": "config.yaml",
+                "type": "file",
+                "path": "turn-1/datasync/config.yaml",
+                "size": 1127,
+                "extension": "yaml"
+              },
+              {
+                "name": "datasync.py",
+                "type": "file",
+                "path": "turn-1/datasync/datasync.py",
+                "size": 10976,
+                "extension": "py"
+              },
+              {
+                "name": "db.py",
+                "type": "file",
+                "path": "turn-1/datasync/db.py",
+                "size": 4871,
+                "extension": "py"
+              },
+              {
+                "name": "main.py",
+                "type": "file",
+                "path": "turn-1/datasync/main.py",
+                "size": 3966,
+                "extension": "py"
+              },
+              {
+                "name": "pyproject.toml",
+                "type": "file",
+                "path": "turn-1/datasync/pyproject.toml",
+                "size": 537,
+                "extension": "toml"
+              },
+              {
+                "name": "README.md",
+                "type": "file",
+                "path": "turn-1/datasync/README.md",
+                "size": 1920,
+                "extension": "md"
+              },
+              {
+                "name": "requirements.txt",
+                "type": "file",
+                "path": "turn-1/datasync/requirements.txt",
+                "size": 95,
+                "extension": "txt"
+              },
+              {
+                "name": "sync_engine.py",
+                "type": "file",
+                "path": "turn-1/datasync/sync_engine.py",
+                "size": 14711,
+                "extension": "py"
+              },
+              {
+                "name": "sync.py",
+                "type": "file",
+                "path": "turn-1/datasync/sync.py",
+                "size": 8847,
+                "extension": "py"
+              }
+            ]
+          },
+          {
+            "name": "express-api",
+            "type": "folder",
+            "path": "turn-1/express-api",
+            "children": [
+              {
+                "name": "middleware",
+                "type": "folder",
+                "path": "turn-1/express-api/middleware",
+                "children": [
+                  {
+                    "name": "auth.js",
+                    "type": "file",
+                    "path": "turn-1/express-api/middleware/auth.js",
+                    "size": 618,
+                    "extension": "js"
+                  }
+                ]
+              },
+              {
+                "name": "models",
+                "type": "folder",
+                "path": "turn-1/express-api/models",
+                "children": [
+                  {
+                    "name": "user.js",
+                    "type": "file",
+                    "path": "turn-1/express-api/models/user.js",
+                    "size": 406,
+                    "extension": "js"
+                  }
+                ]
+              },
+              {
+                "name": "routes",
+                "type": "folder",
+                "path": "turn-1/express-api/routes",
+                "children": [
+                  {
+                    "name": "users.js",
+                    "type": "file",
+                    "path": "turn-1/express-api/routes/users.js",
+                    "size": 769,
+                    "extension": "js"
+                  }
+                ]
+              },
+              {
+                "name": "package.json",
+                "type": "file",
+                "path": "turn-1/express-api/package.json",
+                "size": 240,
+                "extension": "json"
+              },
+              {
+                "name": "server.js",
+                "type": "file",
+                "path": "turn-1/express-api/server.js",
+                "size": 631,
+                "extension": "js"
+              }
+            ]
+          },
+          {
+            "name": "express-api-ts",
+            "type": "folder",
+            "path": "turn-1/express-api-ts",
+            "children": [
+              {
+                "name": "src",
+                "type": "folder",
+                "path": "turn-1/express-api-ts/src",
+                "children": [
+                  {
+                    "name": "middleware",
+                    "type": "folder",
+                    "path": "turn-1/express-api-ts/src/middleware",
+                    "children": [
+                      {
+                        "name": "auth.ts",
+                        "type": "file",
+                        "path": "turn-1/express-api-ts/src/middleware/auth.ts",
+                        "size": 759,
+                        "extension": "ts"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "models",
+                    "type": "folder",
+                    "path": "turn-1/express-api-ts/src/models",
+                    "children": [
+                      {
+                        "name": "user.ts",
+                        "type": "file",
+                        "path": "turn-1/express-api-ts/src/models/user.ts",
+                        "size": 514,
+                        "extension": "ts"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "routes",
+                    "type": "folder",
+                    "path": "turn-1/express-api-ts/src/routes",
+                    "children": [
+                      {
+                        "name": "users.ts",
+                        "type": "file",
+                        "path": "turn-1/express-api-ts/src/routes/users.ts",
+                        "size": 1093,
+                        "extension": "ts"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "types",
+                    "type": "folder",
+                    "path": "turn-1/express-api-ts/src/types",
+                    "children": [
+                      {
+                        "name": "index.ts",
+                        "type": "file",
+                        "path": "turn-1/express-api-ts/src/types/index.ts",
+                        "size": 473,
+                        "extension": "ts"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "server.ts",
+                    "type": "file",
+                    "path": "turn-1/express-api-ts/src/server.ts",
+                    "size": 770,
+                    "extension": "ts"
+                  }
+                ]
+              },
+              {
+                "name": "package.json",
+                "type": "file",
+                "path": "turn-1/express-api-ts/package.json",
+                "size": 485,
+                "extension": "json"
+              },
+              {
+                "name": "tsconfig.json",
+                "type": "file",
+                "path": "turn-1/express-api-ts/tsconfig.json",
+                "size": 445,
+                "extension": "json"
+              }
+            ]
+          },
+          {
+            "name": "find_duplicates",
+            "type": "folder",
+            "path": "turn-1/find_duplicates",
+            "children": [
+              {
+                "name": "__pycache__",
+                "type": "folder",
+                "path": "turn-1/find_duplicates/__pycache__",
+                "children": [
+                  {
+                    "name": "duplicates.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-1/find_duplicates/__pycache__/duplicates.cpython-313.pyc",
+                    "size": 1043,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "test_duplicates.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-1/find_duplicates/__pycache__/test_duplicates.cpython-313.pyc",
+                    "size": 4345,
+                    "extension": "pyc"
+                  }
+                ]
+              },
+              {
+                "name": "duplicates.py",
+                "type": "file",
+                "path": "turn-1/find_duplicates/duplicates.py",
+                "size": 654,
+                "extension": "py"
+              },
+              {
+                "name": "pyproject.toml",
+                "type": "file",
+                "path": "turn-1/find_duplicates/pyproject.toml",
+                "size": 180,
+                "extension": "toml"
+              },
+              {
+                "name": "test_duplicates.py",
+                "type": "file",
+                "path": "turn-1/find_duplicates/test_duplicates.py",
+                "size": 2417,
+                "extension": "py"
+              }
+            ]
+          },
+          {
+            "name": "src",
+            "type": "folder",
+            "path": "turn-1/src",
+            "children": [
+              {
+                "name": "models",
+                "type": "folder",
+                "path": "turn-1/src/models",
+                "children": [
+                  {
+                    "name": "user.ts",
+                    "type": "file",
+                    "path": "turn-1/src/models/user.ts",
+                    "size": 572,
+                    "extension": "ts"
+                  }
+                ]
+              },
+              {
+                "name": "index.ts",
+                "type": "file",
+                "path": "turn-1/src/index.ts",
+                "size": 221,
+                "extension": "ts"
+              }
+            ]
+          },
+          {
+            "name": "weather-client",
+            "type": "folder",
+            "path": "turn-1/weather-client",
+            "children": [
+              {
+                "name": "src",
+                "type": "folder",
+                "path": "turn-1/weather-client/src",
+                "children": [
+                  {
+                    "name": "client.ts",
+                    "type": "file",
+                    "path": "turn-1/weather-client/src/client.ts",
+                    "size": 5057,
+                    "extension": "ts"
+                  },
+                  {
+                    "name": "errors.ts",
+                    "type": "file",
+                    "path": "turn-1/weather-client/src/errors.ts",
+                    "size": 664,
+                    "extension": "ts"
+                  },
+                  {
+                    "name": "index.ts",
+                    "type": "file",
+                    "path": "turn-1/weather-client/src/index.ts",
+                    "size": 253,
+                    "extension": "ts"
+                  },
+                  {
+                    "name": "rate-limiter.ts",
+                    "type": "file",
+                    "path": "turn-1/weather-client/src/rate-limiter.ts",
+                    "size": 2193,
+                    "extension": "ts"
+                  },
+                  {
+                    "name": "types.ts",
+                    "type": "file",
+                    "path": "turn-1/weather-client/src/types.ts",
+                    "size": 1102,
+                    "extension": "ts"
+                  }
+                ]
+              },
+              {
+                "name": "package.json",
+                "type": "file",
+                "path": "turn-1/weather-client/package.json",
+                "size": 315,
+                "extension": "json"
+              },
+              {
+                "name": "README.md",
+                "type": "file",
+                "path": "turn-1/weather-client/README.md",
+                "size": 3353,
+                "extension": "md"
+              },
+              {
+                "name": "tsconfig.json",
+                "type": "file",
+                "path": "turn-1/weather-client/tsconfig.json",
+                "size": 421,
+                "extension": "json"
+              }
+            ]
+          },
+          {
+            "name": "AGENTS.md",
+            "type": "file",
+            "path": "turn-1/AGENTS.md",
+            "size": 7869,
+            "extension": "md"
+          },
+          {
+            "name": "BOOTSTRAP.md",
+            "type": "file",
+            "path": "turn-1/BOOTSTRAP.md",
+            "size": 1681,
+            "extension": "md"
+          },
+          {
+            "name": "HEARTBEAT.md",
+            "type": "file",
+            "path": "turn-1/HEARTBEAT.md",
+            "size": 168,
+            "extension": "md"
+          },
+          {
+            "name": "IDENTITY.md",
+            "type": "file",
+            "path": "turn-1/IDENTITY.md",
+            "size": 635,
+            "extension": "md"
+          },
+          {
+            "name": "MEMORY.md",
+            "type": "file",
+            "path": "turn-1/MEMORY.md",
+            "size": 193,
+            "extension": "md"
+          },
+          {
+            "name": "SOUL.md",
+            "type": "file",
+            "path": "turn-1/SOUL.md",
+            "size": 1673,
+            "extension": "md"
+          },
+          {
+            "name": "TOOLS.md",
+            "type": "file",
+            "path": "turn-1/TOOLS.md",
+            "size": 860,
+            "extension": "md"
+          },
+          {
+            "name": "USER.md",
+            "type": "file",
+            "path": "turn-1/USER.md",
+            "size": 481,
+            "extension": "md"
+          }
+        ]
+      },
+      {
+        "name": "turn-2",
+        "type": "folder",
+        "path": "turn-2",
+        "children": [
+          {
+            "name": ".git",
+            "type": "folder",
+            "path": "turn-2/.git",
+            "children": [
+              {
+                "name": "branches",
+                "type": "folder",
+                "path": "turn-2/.git/branches",
+                "children": []
+              },
+              {
+                "name": "hooks",
+                "type": "folder",
+                "path": "turn-2/.git/hooks",
+                "children": [
+                  {
+                    "name": "applypatch-msg.sample",
+                    "type": "file",
+                    "path": "turn-2/.git/hooks/applypatch-msg.sample",
+                    "size": 478,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "commit-msg.sample",
+                    "type": "file",
+                    "path": "turn-2/.git/hooks/commit-msg.sample",
+                    "size": 896,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "fsmonitor-watchman.sample",
+                    "type": "file",
+                    "path": "turn-2/.git/hooks/fsmonitor-watchman.sample",
+                    "size": 4726,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "post-update.sample",
+                    "type": "file",
+                    "path": "turn-2/.git/hooks/post-update.sample",
+                    "size": 189,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-applypatch.sample",
+                    "type": "file",
+                    "path": "turn-2/.git/hooks/pre-applypatch.sample",
+                    "size": 424,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-commit.sample",
+                    "type": "file",
+                    "path": "turn-2/.git/hooks/pre-commit.sample",
+                    "size": 1643,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-merge-commit.sample",
+                    "type": "file",
+                    "path": "turn-2/.git/hooks/pre-merge-commit.sample",
+                    "size": 416,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-push.sample",
+                    "type": "file",
+                    "path": "turn-2/.git/hooks/pre-push.sample",
+                    "size": 1374,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-rebase.sample",
+                    "type": "file",
+                    "path": "turn-2/.git/hooks/pre-rebase.sample",
+                    "size": 4898,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-receive.sample",
+                    "type": "file",
+                    "path": "turn-2/.git/hooks/pre-receive.sample",
+                    "size": 544,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "prepare-commit-msg.sample",
+                    "type": "file",
+                    "path": "turn-2/.git/hooks/prepare-commit-msg.sample",
+                    "size": 1492,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "push-to-checkout.sample",
+                    "type": "file",
+                    "path": "turn-2/.git/hooks/push-to-checkout.sample",
+                    "size": 2783,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "update.sample",
+                    "type": "file",
+                    "path": "turn-2/.git/hooks/update.sample",
+                    "size": 3650,
+                    "extension": "sample"
+                  }
+                ]
+              },
+              {
+                "name": "info",
+                "type": "folder",
+                "path": "turn-2/.git/info",
+                "children": [
+                  {
+                    "name": "exclude",
+                    "type": "file",
+                    "path": "turn-2/.git/info/exclude",
+                    "size": 240,
+                    "extension": "txt"
+                  }
+                ]
+              },
+              {
+                "name": "objects",
+                "type": "folder",
+                "path": "turn-2/.git/objects",
+                "children": [
+                  {
+                    "name": "info",
+                    "type": "folder",
+                    "path": "turn-2/.git/objects/info",
+                    "children": []
+                  },
+                  {
+                    "name": "pack",
+                    "type": "folder",
+                    "path": "turn-2/.git/objects/pack",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "refs",
+                "type": "folder",
+                "path": "turn-2/.git/refs",
+                "children": [
+                  {
+                    "name": "heads",
+                    "type": "folder",
+                    "path": "turn-2/.git/refs/heads",
+                    "children": []
+                  },
+                  {
+                    "name": "tags",
+                    "type": "folder",
+                    "path": "turn-2/.git/refs/tags",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "config",
+                "type": "file",
+                "path": "turn-2/.git/config",
+                "size": 111,
+                "extension": "txt"
+              },
+              {
+                "name": "description",
+                "type": "file",
+                "path": "turn-2/.git/description",
+                "size": 73,
+                "extension": "txt"
+              },
+              {
+                "name": "HEAD",
+                "type": "file",
+                "path": "turn-2/.git/HEAD",
+                "size": 23,
+                "extension": "txt"
+              }
+            ]
+          },
+          {
+            "name": "auth-system",
+            "type": "folder",
+            "path": "turn-2/auth-system",
+            "children": [
+              {
+                "name": "migrations",
+                "type": "folder",
+                "path": "turn-2/auth-system/migrations",
+                "children": [
+                  {
+                    "name": "001_create_auth_tables.sql",
+                    "type": "file",
+                    "path": "turn-2/auth-system/migrations/001_create_auth_tables.sql",
+                    "size": 819,
+                    "extension": "sql"
+                  }
+                ]
+              },
+              {
+                "name": "src",
+                "type": "folder",
+                "path": "turn-2/auth-system/src",
+                "children": [
+                  {
+                    "name": "auth.service.ts",
+                    "type": "file",
+                    "path": "turn-2/auth-system/src/auth.service.ts",
+                    "size": 5033,
+                    "extension": "ts"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "datasync",
+            "type": "folder",
+            "path": "turn-2/datasync",
+            "children": [
+              {
+                "name": "__pycache__",
+                "type": "folder",
+                "path": "turn-2/datasync/__pycache__",
+                "children": [
+                  {
+                    "name": "__init__.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-2/datasync/__pycache__/__init__.cpython-313.pyc",
+                    "size": 293,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "__main__.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-2/datasync/__pycache__/__main__.cpython-313.pyc",
+                    "size": 5387,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "config_loader.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-2/datasync/__pycache__/config_loader.cpython-313.pyc",
+                    "size": 7971,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "config.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-2/datasync/__pycache__/config.cpython-313.pyc",
+                    "size": 5369,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "datasync.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-2/datasync/__pycache__/datasync.cpython-313.pyc",
+                    "size": 16134,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "db.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-2/datasync/__pycache__/db.cpython-313.pyc",
+                    "size": 8008,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "main.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-2/datasync/__pycache__/main.cpython-313.pyc",
+                    "size": 6327,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "sync_engine.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-2/datasync/__pycache__/sync_engine.cpython-313.pyc",
+                    "size": 20451,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "sync.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-2/datasync/__pycache__/sync.cpython-313.pyc",
+                    "size": 11546,
+                    "extension": "pyc"
+                  }
+                ]
+              },
+              {
+                "name": "datasync",
+                "type": "folder",
+                "path": "turn-2/datasync/datasync",
+                "children": [
+                  {
+                    "name": "__pycache__",
+                    "type": "folder",
+                    "path": "turn-2/datasync/datasync/__pycache__",
+                    "children": [
+                      {
+                        "name": "__init__.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-2/datasync/datasync/__pycache__/__init__.cpython-313.pyc",
+                        "size": 301,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "__main__.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-2/datasync/datasync/__pycache__/__main__.cpython-313.pyc",
+                        "size": 2344,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "config.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-2/datasync/datasync/__pycache__/config.cpython-313.pyc",
+                        "size": 8631,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "main.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-2/datasync/datasync/__pycache__/main.cpython-313.pyc",
+                        "size": 7126,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "sync_engine.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-2/datasync/datasync/__pycache__/sync_engine.cpython-313.pyc",
+                        "size": 20882,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "sync.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-2/datasync/datasync/__pycache__/sync.cpython-313.pyc",
+                        "size": 14282,
+                        "extension": "pyc"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "__init__.py",
+                    "type": "file",
+                    "path": "turn-2/datasync/datasync/__init__.py",
+                    "size": 80,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "__main__.py",
+                    "type": "file",
+                    "path": "turn-2/datasync/datasync/__main__.py",
+                    "size": 1369,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "config.py",
+                    "type": "file",
+                    "path": "turn-2/datasync/datasync/config.py",
+                    "size": 5109,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "main.py",
+                    "type": "file",
+                    "path": "turn-2/datasync/datasync/main.py",
+                    "size": 4312,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "sync_engine.py",
+                    "type": "file",
+                    "path": "turn-2/datasync/datasync/sync_engine.py",
+                    "size": 12955,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "sync.py",
+                    "type": "file",
+                    "path": "turn-2/datasync/datasync/sync.py",
+                    "size": 11824,
+                    "extension": "py"
+                  }
+                ]
+              },
+              {
+                "name": "__init__.py",
+                "type": "file",
+                "path": "turn-2/datasync/__init__.py",
+                "size": 84,
+                "extension": "py"
+              },
+              {
+                "name": "__main__.py",
+                "type": "file",
+                "path": "turn-2/datasync/__main__.py",
+                "size": 3223,
+                "extension": "py"
+              },
+              {
+                "name": ".env.example",
+                "type": "file",
+                "path": "turn-2/datasync/.env.example",
+                "size": 154,
+                "extension": "example"
+              },
+              {
+                "name": ".gitignore",
+                "type": "file",
+                "path": "turn-2/datasync/.gitignore",
+                "size": 127,
+                "extension": "txt"
+              },
+              {
+                "name": "config_loader.py",
+                "type": "file",
+                "path": "turn-2/datasync/config_loader.py",
+                "size": 4600,
+                "extension": "py"
+              },
+              {
+                "name": "config.py",
+                "type": "file",
+                "path": "turn-2/datasync/config.py",
+                "size": 3063,
+                "extension": "py"
+              },
+              {
+                "name": "config.yaml",
+                "type": "file",
+                "path": "turn-2/datasync/config.yaml",
+                "size": 1127,
+                "extension": "yaml"
+              },
+              {
+                "name": "datasync.py",
+                "type": "file",
+                "path": "turn-2/datasync/datasync.py",
+                "size": 10976,
+                "extension": "py"
+              },
+              {
+                "name": "db.py",
+                "type": "file",
+                "path": "turn-2/datasync/db.py",
+                "size": 4871,
+                "extension": "py"
+              },
+              {
+                "name": "main.py",
+                "type": "file",
+                "path": "turn-2/datasync/main.py",
+                "size": 3966,
+                "extension": "py"
+              },
+              {
+                "name": "pyproject.toml",
+                "type": "file",
+                "path": "turn-2/datasync/pyproject.toml",
+                "size": 537,
+                "extension": "toml"
+              },
+              {
+                "name": "README.md",
+                "type": "file",
+                "path": "turn-2/datasync/README.md",
+                "size": 1920,
+                "extension": "md"
+              },
+              {
+                "name": "requirements.txt",
+                "type": "file",
+                "path": "turn-2/datasync/requirements.txt",
+                "size": 95,
+                "extension": "txt"
+              },
+              {
+                "name": "sync_engine.py",
+                "type": "file",
+                "path": "turn-2/datasync/sync_engine.py",
+                "size": 14711,
+                "extension": "py"
+              },
+              {
+                "name": "sync.py",
+                "type": "file",
+                "path": "turn-2/datasync/sync.py",
+                "size": 8847,
+                "extension": "py"
+              }
+            ]
+          },
+          {
+            "name": "express-api",
+            "type": "folder",
+            "path": "turn-2/express-api",
+            "children": [
+              {
+                "name": "middleware",
+                "type": "folder",
+                "path": "turn-2/express-api/middleware",
+                "children": [
+                  {
+                    "name": "auth.js",
+                    "type": "file",
+                    "path": "turn-2/express-api/middleware/auth.js",
+                    "size": 618,
+                    "extension": "js"
+                  }
+                ]
+              },
+              {
+                "name": "models",
+                "type": "folder",
+                "path": "turn-2/express-api/models",
+                "children": [
+                  {
+                    "name": "user.js",
+                    "type": "file",
+                    "path": "turn-2/express-api/models/user.js",
+                    "size": 406,
+                    "extension": "js"
+                  }
+                ]
+              },
+              {
+                "name": "routes",
+                "type": "folder",
+                "path": "turn-2/express-api/routes",
+                "children": [
+                  {
+                    "name": "users.js",
+                    "type": "file",
+                    "path": "turn-2/express-api/routes/users.js",
+                    "size": 769,
+                    "extension": "js"
+                  }
+                ]
+              },
+              {
+                "name": "package.json",
+                "type": "file",
+                "path": "turn-2/express-api/package.json",
+                "size": 240,
+                "extension": "json"
+              },
+              {
+                "name": "server.js",
+                "type": "file",
+                "path": "turn-2/express-api/server.js",
+                "size": 631,
+                "extension": "js"
+              }
+            ]
+          },
+          {
+            "name": "express-api-ts",
+            "type": "folder",
+            "path": "turn-2/express-api-ts",
+            "children": [
+              {
+                "name": "src",
+                "type": "folder",
+                "path": "turn-2/express-api-ts/src",
+                "children": [
+                  {
+                    "name": "middleware",
+                    "type": "folder",
+                    "path": "turn-2/express-api-ts/src/middleware",
+                    "children": [
+                      {
+                        "name": "auth.ts",
+                        "type": "file",
+                        "path": "turn-2/express-api-ts/src/middleware/auth.ts",
+                        "size": 759,
+                        "extension": "ts"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "models",
+                    "type": "folder",
+                    "path": "turn-2/express-api-ts/src/models",
+                    "children": [
+                      {
+                        "name": "user.ts",
+                        "type": "file",
+                        "path": "turn-2/express-api-ts/src/models/user.ts",
+                        "size": 514,
+                        "extension": "ts"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "routes",
+                    "type": "folder",
+                    "path": "turn-2/express-api-ts/src/routes",
+                    "children": [
+                      {
+                        "name": "users.ts",
+                        "type": "file",
+                        "path": "turn-2/express-api-ts/src/routes/users.ts",
+                        "size": 1093,
+                        "extension": "ts"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "types",
+                    "type": "folder",
+                    "path": "turn-2/express-api-ts/src/types",
+                    "children": [
+                      {
+                        "name": "index.ts",
+                        "type": "file",
+                        "path": "turn-2/express-api-ts/src/types/index.ts",
+                        "size": 473,
+                        "extension": "ts"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "server.ts",
+                    "type": "file",
+                    "path": "turn-2/express-api-ts/src/server.ts",
+                    "size": 770,
+                    "extension": "ts"
+                  }
+                ]
+              },
+              {
+                "name": "package.json",
+                "type": "file",
+                "path": "turn-2/express-api-ts/package.json",
+                "size": 485,
+                "extension": "json"
+              },
+              {
+                "name": "tsconfig.json",
+                "type": "file",
+                "path": "turn-2/express-api-ts/tsconfig.json",
+                "size": 445,
+                "extension": "json"
+              }
+            ]
+          },
+          {
+            "name": "find_duplicates",
+            "type": "folder",
+            "path": "turn-2/find_duplicates",
+            "children": [
+              {
+                "name": "__pycache__",
+                "type": "folder",
+                "path": "turn-2/find_duplicates/__pycache__",
+                "children": [
+                  {
+                    "name": "duplicates.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-2/find_duplicates/__pycache__/duplicates.cpython-313.pyc",
+                    "size": 1043,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "test_duplicates.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-2/find_duplicates/__pycache__/test_duplicates.cpython-313.pyc",
+                    "size": 4345,
+                    "extension": "pyc"
+                  }
+                ]
+              },
+              {
+                "name": "duplicates.py",
+                "type": "file",
+                "path": "turn-2/find_duplicates/duplicates.py",
+                "size": 654,
+                "extension": "py"
+              },
+              {
+                "name": "pyproject.toml",
+                "type": "file",
+                "path": "turn-2/find_duplicates/pyproject.toml",
+                "size": 180,
+                "extension": "toml"
+              },
+              {
+                "name": "test_duplicates.py",
+                "type": "file",
+                "path": "turn-2/find_duplicates/test_duplicates.py",
+                "size": 2417,
+                "extension": "py"
+              }
+            ]
+          },
+          {
+            "name": "src",
+            "type": "folder",
+            "path": "turn-2/src",
+            "children": [
+              {
+                "name": "models",
+                "type": "folder",
+                "path": "turn-2/src/models",
+                "children": [
+                  {
+                    "name": "user.ts",
+                    "type": "file",
+                    "path": "turn-2/src/models/user.ts",
+                    "size": 572,
+                    "extension": "ts"
+                  }
+                ]
+              },
+              {
+                "name": "index.ts",
+                "type": "file",
+                "path": "turn-2/src/index.ts",
+                "size": 221,
+                "extension": "ts"
+              }
+            ]
+          },
+          {
+            "name": "user_utils",
+            "type": "folder",
+            "path": "turn-2/user_utils",
+            "children": [
+              {
+                "name": "__pycache__",
+                "type": "folder",
+                "path": "turn-2/user_utils/__pycache__",
+                "children": [
+                  {
+                    "name": "test_users.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-2/user_utils/__pycache__/test_users.cpython-313.pyc",
+                    "size": 5117,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "users.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-2/user_utils/__pycache__/users.cpython-313.pyc",
+                    "size": 2296,
+                    "extension": "pyc"
+                  }
+                ]
+              },
+              {
+                "name": "test_users.py",
+                "type": "file",
+                "path": "turn-2/user_utils/test_users.py",
+                "size": 2520,
+                "extension": "py"
+              },
+              {
+                "name": "users.py",
+                "type": "file",
+                "path": "turn-2/user_utils/users.py",
+                "size": 1283,
+                "extension": "py"
+              }
+            ]
+          },
+          {
+            "name": "weather-client",
+            "type": "folder",
+            "path": "turn-2/weather-client",
+            "children": [
+              {
+                "name": "src",
+                "type": "folder",
+                "path": "turn-2/weather-client/src",
+                "children": [
+                  {
+                    "name": "client.ts",
+                    "type": "file",
+                    "path": "turn-2/weather-client/src/client.ts",
+                    "size": 5057,
+                    "extension": "ts"
+                  },
+                  {
+                    "name": "errors.ts",
+                    "type": "file",
+                    "path": "turn-2/weather-client/src/errors.ts",
+                    "size": 664,
+                    "extension": "ts"
+                  },
+                  {
+                    "name": "index.ts",
+                    "type": "file",
+                    "path": "turn-2/weather-client/src/index.ts",
+                    "size": 253,
+                    "extension": "ts"
+                  },
+                  {
+                    "name": "rate-limiter.ts",
+                    "type": "file",
+                    "path": "turn-2/weather-client/src/rate-limiter.ts",
+                    "size": 2193,
+                    "extension": "ts"
+                  },
+                  {
+                    "name": "types.ts",
+                    "type": "file",
+                    "path": "turn-2/weather-client/src/types.ts",
+                    "size": 1102,
+                    "extension": "ts"
+                  }
+                ]
+              },
+              {
+                "name": "package.json",
+                "type": "file",
+                "path": "turn-2/weather-client/package.json",
+                "size": 315,
+                "extension": "json"
+              },
+              {
+                "name": "README.md",
+                "type": "file",
+                "path": "turn-2/weather-client/README.md",
+                "size": 3353,
+                "extension": "md"
+              },
+              {
+                "name": "tsconfig.json",
+                "type": "file",
+                "path": "turn-2/weather-client/tsconfig.json",
+                "size": 421,
+                "extension": "json"
+              }
+            ]
+          },
+          {
+            "name": "AGENTS.md",
+            "type": "file",
+            "path": "turn-2/AGENTS.md",
+            "size": 7869,
+            "extension": "md"
+          },
+          {
+            "name": "BOOTSTRAP.md",
+            "type": "file",
+            "path": "turn-2/BOOTSTRAP.md",
+            "size": 1681,
+            "extension": "md"
+          },
+          {
+            "name": "HEARTBEAT.md",
+            "type": "file",
+            "path": "turn-2/HEARTBEAT.md",
+            "size": 168,
+            "extension": "md"
+          },
+          {
+            "name": "IDENTITY.md",
+            "type": "file",
+            "path": "turn-2/IDENTITY.md",
+            "size": 635,
+            "extension": "md"
+          },
+          {
+            "name": "MEMORY.md",
+            "type": "file",
+            "path": "turn-2/MEMORY.md",
+            "size": 193,
+            "extension": "md"
+          },
+          {
+            "name": "SOUL.md",
+            "type": "file",
+            "path": "turn-2/SOUL.md",
+            "size": 1673,
+            "extension": "md"
+          },
+          {
+            "name": "TOOLS.md",
+            "type": "file",
+            "path": "turn-2/TOOLS.md",
+            "size": 860,
+            "extension": "md"
+          },
+          {
+            "name": "USER.md",
+            "type": "file",
+            "path": "turn-2/USER.md",
+            "size": 481,
+            "extension": "md"
+          }
+        ]
+      },
+      {
+        "name": "turn-3",
+        "type": "folder",
+        "path": "turn-3",
+        "children": [
+          {
+            "name": ".git",
+            "type": "folder",
+            "path": "turn-3/.git",
+            "children": [
+              {
+                "name": "branches",
+                "type": "folder",
+                "path": "turn-3/.git/branches",
+                "children": []
+              },
+              {
+                "name": "hooks",
+                "type": "folder",
+                "path": "turn-3/.git/hooks",
+                "children": [
+                  {
+                    "name": "applypatch-msg.sample",
+                    "type": "file",
+                    "path": "turn-3/.git/hooks/applypatch-msg.sample",
+                    "size": 478,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "commit-msg.sample",
+                    "type": "file",
+                    "path": "turn-3/.git/hooks/commit-msg.sample",
+                    "size": 896,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "fsmonitor-watchman.sample",
+                    "type": "file",
+                    "path": "turn-3/.git/hooks/fsmonitor-watchman.sample",
+                    "size": 4726,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "post-update.sample",
+                    "type": "file",
+                    "path": "turn-3/.git/hooks/post-update.sample",
+                    "size": 189,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-applypatch.sample",
+                    "type": "file",
+                    "path": "turn-3/.git/hooks/pre-applypatch.sample",
+                    "size": 424,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-commit.sample",
+                    "type": "file",
+                    "path": "turn-3/.git/hooks/pre-commit.sample",
+                    "size": 1643,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-merge-commit.sample",
+                    "type": "file",
+                    "path": "turn-3/.git/hooks/pre-merge-commit.sample",
+                    "size": 416,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-push.sample",
+                    "type": "file",
+                    "path": "turn-3/.git/hooks/pre-push.sample",
+                    "size": 1374,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-rebase.sample",
+                    "type": "file",
+                    "path": "turn-3/.git/hooks/pre-rebase.sample",
+                    "size": 4898,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "pre-receive.sample",
+                    "type": "file",
+                    "path": "turn-3/.git/hooks/pre-receive.sample",
+                    "size": 544,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "prepare-commit-msg.sample",
+                    "type": "file",
+                    "path": "turn-3/.git/hooks/prepare-commit-msg.sample",
+                    "size": 1492,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "push-to-checkout.sample",
+                    "type": "file",
+                    "path": "turn-3/.git/hooks/push-to-checkout.sample",
+                    "size": 2783,
+                    "extension": "sample"
+                  },
+                  {
+                    "name": "update.sample",
+                    "type": "file",
+                    "path": "turn-3/.git/hooks/update.sample",
+                    "size": 3650,
+                    "extension": "sample"
+                  }
+                ]
+              },
+              {
+                "name": "info",
+                "type": "folder",
+                "path": "turn-3/.git/info",
+                "children": [
+                  {
+                    "name": "exclude",
+                    "type": "file",
+                    "path": "turn-3/.git/info/exclude",
+                    "size": 240,
+                    "extension": "txt"
+                  }
+                ]
+              },
+              {
+                "name": "objects",
+                "type": "folder",
+                "path": "turn-3/.git/objects",
+                "children": [
+                  {
+                    "name": "info",
+                    "type": "folder",
+                    "path": "turn-3/.git/objects/info",
+                    "children": []
+                  },
+                  {
+                    "name": "pack",
+                    "type": "folder",
+                    "path": "turn-3/.git/objects/pack",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "refs",
+                "type": "folder",
+                "path": "turn-3/.git/refs",
+                "children": [
+                  {
+                    "name": "heads",
+                    "type": "folder",
+                    "path": "turn-3/.git/refs/heads",
+                    "children": []
+                  },
+                  {
+                    "name": "tags",
+                    "type": "folder",
+                    "path": "turn-3/.git/refs/tags",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "config",
+                "type": "file",
+                "path": "turn-3/.git/config",
+                "size": 111,
+                "extension": "txt"
+              },
+              {
+                "name": "description",
+                "type": "file",
+                "path": "turn-3/.git/description",
+                "size": 73,
+                "extension": "txt"
+              },
+              {
+                "name": "HEAD",
+                "type": "file",
+                "path": "turn-3/.git/HEAD",
+                "size": 23,
+                "extension": "txt"
+              }
+            ]
+          },
+          {
+            "name": "auth-system",
+            "type": "folder",
+            "path": "turn-3/auth-system",
+            "children": [
+              {
+                "name": "migrations",
+                "type": "folder",
+                "path": "turn-3/auth-system/migrations",
+                "children": [
+                  {
+                    "name": "001_create_auth_tables.sql",
+                    "type": "file",
+                    "path": "turn-3/auth-system/migrations/001_create_auth_tables.sql",
+                    "size": 819,
+                    "extension": "sql"
+                  }
+                ]
+              },
+              {
+                "name": "src",
+                "type": "folder",
+                "path": "turn-3/auth-system/src",
+                "children": [
+                  {
+                    "name": "auth.service.ts",
+                    "type": "file",
+                    "path": "turn-3/auth-system/src/auth.service.ts",
+                    "size": 5033,
+                    "extension": "ts"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "datasync",
+            "type": "folder",
+            "path": "turn-3/datasync",
+            "children": [
+              {
+                "name": "__pycache__",
+                "type": "folder",
+                "path": "turn-3/datasync/__pycache__",
+                "children": [
+                  {
+                    "name": "__init__.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-3/datasync/__pycache__/__init__.cpython-313.pyc",
+                    "size": 293,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "__main__.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-3/datasync/__pycache__/__main__.cpython-313.pyc",
+                    "size": 5387,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "config_loader.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-3/datasync/__pycache__/config_loader.cpython-313.pyc",
+                    "size": 7971,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "config.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-3/datasync/__pycache__/config.cpython-313.pyc",
+                    "size": 5369,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "datasync.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-3/datasync/__pycache__/datasync.cpython-313.pyc",
+                    "size": 16134,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "db.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-3/datasync/__pycache__/db.cpython-313.pyc",
+                    "size": 8008,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "main.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-3/datasync/__pycache__/main.cpython-313.pyc",
+                    "size": 6327,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "sync_engine.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-3/datasync/__pycache__/sync_engine.cpython-313.pyc",
+                    "size": 20451,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "sync.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-3/datasync/__pycache__/sync.cpython-313.pyc",
+                    "size": 11546,
+                    "extension": "pyc"
+                  }
+                ]
+              },
+              {
+                "name": "datasync",
+                "type": "folder",
+                "path": "turn-3/datasync/datasync",
+                "children": [
+                  {
+                    "name": "__pycache__",
+                    "type": "folder",
+                    "path": "turn-3/datasync/datasync/__pycache__",
+                    "children": [
+                      {
+                        "name": "__init__.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-3/datasync/datasync/__pycache__/__init__.cpython-313.pyc",
+                        "size": 301,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "__main__.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-3/datasync/datasync/__pycache__/__main__.cpython-313.pyc",
+                        "size": 2344,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "config.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-3/datasync/datasync/__pycache__/config.cpython-313.pyc",
+                        "size": 8631,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "main.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-3/datasync/datasync/__pycache__/main.cpython-313.pyc",
+                        "size": 7126,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "sync_engine.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-3/datasync/datasync/__pycache__/sync_engine.cpython-313.pyc",
+                        "size": 20882,
+                        "extension": "pyc"
+                      },
+                      {
+                        "name": "sync.cpython-313.pyc",
+                        "type": "file",
+                        "path": "turn-3/datasync/datasync/__pycache__/sync.cpython-313.pyc",
+                        "size": 14282,
+                        "extension": "pyc"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "__init__.py",
+                    "type": "file",
+                    "path": "turn-3/datasync/datasync/__init__.py",
+                    "size": 80,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "__main__.py",
+                    "type": "file",
+                    "path": "turn-3/datasync/datasync/__main__.py",
+                    "size": 1369,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "config.py",
+                    "type": "file",
+                    "path": "turn-3/datasync/datasync/config.py",
+                    "size": 5109,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "main.py",
+                    "type": "file",
+                    "path": "turn-3/datasync/datasync/main.py",
+                    "size": 4312,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "sync_engine.py",
+                    "type": "file",
+                    "path": "turn-3/datasync/datasync/sync_engine.py",
+                    "size": 12955,
+                    "extension": "py"
+                  },
+                  {
+                    "name": "sync.py",
+                    "type": "file",
+                    "path": "turn-3/datasync/datasync/sync.py",
+                    "size": 11824,
+                    "extension": "py"
+                  }
+                ]
+              },
+              {
+                "name": "__init__.py",
+                "type": "file",
+                "path": "turn-3/datasync/__init__.py",
+                "size": 84,
+                "extension": "py"
+              },
+              {
+                "name": "__main__.py",
+                "type": "file",
+                "path": "turn-3/datasync/__main__.py",
+                "size": 3223,
+                "extension": "py"
+              },
+              {
+                "name": ".env.example",
+                "type": "file",
+                "path": "turn-3/datasync/.env.example",
+                "size": 154,
+                "extension": "example"
+              },
+              {
+                "name": ".gitignore",
+                "type": "file",
+                "path": "turn-3/datasync/.gitignore",
+                "size": 127,
+                "extension": "txt"
+              },
+              {
+                "name": "config_loader.py",
+                "type": "file",
+                "path": "turn-3/datasync/config_loader.py",
+                "size": 4600,
+                "extension": "py"
+              },
+              {
+                "name": "config.py",
+                "type": "file",
+                "path": "turn-3/datasync/config.py",
+                "size": 3063,
+                "extension": "py"
+              },
+              {
+                "name": "config.yaml",
+                "type": "file",
+                "path": "turn-3/datasync/config.yaml",
+                "size": 1127,
+                "extension": "yaml"
+              },
+              {
+                "name": "datasync.py",
+                "type": "file",
+                "path": "turn-3/datasync/datasync.py",
+                "size": 10976,
+                "extension": "py"
+              },
+              {
+                "name": "db.py",
+                "type": "file",
+                "path": "turn-3/datasync/db.py",
+                "size": 4871,
+                "extension": "py"
+              },
+              {
+                "name": "main.py",
+                "type": "file",
+                "path": "turn-3/datasync/main.py",
+                "size": 3966,
+                "extension": "py"
+              },
+              {
+                "name": "pyproject.toml",
+                "type": "file",
+                "path": "turn-3/datasync/pyproject.toml",
+                "size": 537,
+                "extension": "toml"
+              },
+              {
+                "name": "README.md",
+                "type": "file",
+                "path": "turn-3/datasync/README.md",
+                "size": 1920,
+                "extension": "md"
+              },
+              {
+                "name": "requirements.txt",
+                "type": "file",
+                "path": "turn-3/datasync/requirements.txt",
+                "size": 95,
+                "extension": "txt"
+              },
+              {
+                "name": "sync_engine.py",
+                "type": "file",
+                "path": "turn-3/datasync/sync_engine.py",
+                "size": 14711,
+                "extension": "py"
+              },
+              {
+                "name": "sync.py",
+                "type": "file",
+                "path": "turn-3/datasync/sync.py",
+                "size": 8847,
+                "extension": "py"
+              }
+            ]
+          },
+          {
+            "name": "express-api",
+            "type": "folder",
+            "path": "turn-3/express-api",
+            "children": [
+              {
+                "name": "middleware",
+                "type": "folder",
+                "path": "turn-3/express-api/middleware",
+                "children": [
+                  {
+                    "name": "auth.js",
+                    "type": "file",
+                    "path": "turn-3/express-api/middleware/auth.js",
+                    "size": 618,
+                    "extension": "js"
+                  }
+                ]
+              },
+              {
+                "name": "models",
+                "type": "folder",
+                "path": "turn-3/express-api/models",
+                "children": [
+                  {
+                    "name": "user.js",
+                    "type": "file",
+                    "path": "turn-3/express-api/models/user.js",
+                    "size": 406,
+                    "extension": "js"
+                  }
+                ]
+              },
+              {
+                "name": "routes",
+                "type": "folder",
+                "path": "turn-3/express-api/routes",
+                "children": [
+                  {
+                    "name": "users.js",
+                    "type": "file",
+                    "path": "turn-3/express-api/routes/users.js",
+                    "size": 769,
+                    "extension": "js"
+                  }
+                ]
+              },
+              {
+                "name": "package.json",
+                "type": "file",
+                "path": "turn-3/express-api/package.json",
+                "size": 240,
+                "extension": "json"
+              },
+              {
+                "name": "server.js",
+                "type": "file",
+                "path": "turn-3/express-api/server.js",
+                "size": 631,
+                "extension": "js"
+              }
+            ]
+          },
+          {
+            "name": "express-api-ts",
+            "type": "folder",
+            "path": "turn-3/express-api-ts",
+            "children": [
+              {
+                "name": "src",
+                "type": "folder",
+                "path": "turn-3/express-api-ts/src",
+                "children": [
+                  {
+                    "name": "middleware",
+                    "type": "folder",
+                    "path": "turn-3/express-api-ts/src/middleware",
+                    "children": [
+                      {
+                        "name": "auth.ts",
+                        "type": "file",
+                        "path": "turn-3/express-api-ts/src/middleware/auth.ts",
+                        "size": 759,
+                        "extension": "ts"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "models",
+                    "type": "folder",
+                    "path": "turn-3/express-api-ts/src/models",
+                    "children": [
+                      {
+                        "name": "user.ts",
+                        "type": "file",
+                        "path": "turn-3/express-api-ts/src/models/user.ts",
+                        "size": 514,
+                        "extension": "ts"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "routes",
+                    "type": "folder",
+                    "path": "turn-3/express-api-ts/src/routes",
+                    "children": [
+                      {
+                        "name": "users.ts",
+                        "type": "file",
+                        "path": "turn-3/express-api-ts/src/routes/users.ts",
+                        "size": 1093,
+                        "extension": "ts"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "types",
+                    "type": "folder",
+                    "path": "turn-3/express-api-ts/src/types",
+                    "children": [
+                      {
+                        "name": "index.ts",
+                        "type": "file",
+                        "path": "turn-3/express-api-ts/src/types/index.ts",
+                        "size": 473,
+                        "extension": "ts"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "server.ts",
+                    "type": "file",
+                    "path": "turn-3/express-api-ts/src/server.ts",
+                    "size": 770,
+                    "extension": "ts"
+                  }
+                ]
+              },
+              {
+                "name": "package.json",
+                "type": "file",
+                "path": "turn-3/express-api-ts/package.json",
+                "size": 485,
+                "extension": "json"
+              },
+              {
+                "name": "tsconfig.json",
+                "type": "file",
+                "path": "turn-3/express-api-ts/tsconfig.json",
+                "size": 445,
+                "extension": "json"
+              }
+            ]
+          },
+          {
+            "name": "find_duplicates",
+            "type": "folder",
+            "path": "turn-3/find_duplicates",
+            "children": [
+              {
+                "name": "__pycache__",
+                "type": "folder",
+                "path": "turn-3/find_duplicates/__pycache__",
+                "children": [
+                  {
+                    "name": "duplicates.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-3/find_duplicates/__pycache__/duplicates.cpython-313.pyc",
+                    "size": 1043,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "test_duplicates.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-3/find_duplicates/__pycache__/test_duplicates.cpython-313.pyc",
+                    "size": 4345,
+                    "extension": "pyc"
+                  }
+                ]
+              },
+              {
+                "name": "duplicates.py",
+                "type": "file",
+                "path": "turn-3/find_duplicates/duplicates.py",
+                "size": 654,
+                "extension": "py"
+              },
+              {
+                "name": "pyproject.toml",
+                "type": "file",
+                "path": "turn-3/find_duplicates/pyproject.toml",
+                "size": 180,
+                "extension": "toml"
+              },
+              {
+                "name": "test_duplicates.py",
+                "type": "file",
+                "path": "turn-3/find_duplicates/test_duplicates.py",
+                "size": 2417,
+                "extension": "py"
+              }
+            ]
+          },
+          {
+            "name": "src",
+            "type": "folder",
+            "path": "turn-3/src",
+            "children": [
+              {
+                "name": "models",
+                "type": "folder",
+                "path": "turn-3/src/models",
+                "children": [
+                  {
+                    "name": "user.ts",
+                    "type": "file",
+                    "path": "turn-3/src/models/user.ts",
+                    "size": 572,
+                    "extension": "ts"
+                  }
+                ]
+              },
+              {
+                "name": "index.ts",
+                "type": "file",
+                "path": "turn-3/src/index.ts",
+                "size": 221,
+                "extension": "ts"
+              }
+            ]
+          },
+          {
+            "name": "user_utils",
+            "type": "folder",
+            "path": "turn-3/user_utils",
+            "children": [
+              {
+                "name": "__pycache__",
+                "type": "folder",
+                "path": "turn-3/user_utils/__pycache__",
+                "children": [
+                  {
+                    "name": "test_users.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-3/user_utils/__pycache__/test_users.cpython-313.pyc",
+                    "size": 19987,
+                    "extension": "pyc"
+                  },
+                  {
+                    "name": "users.cpython-313.pyc",
+                    "type": "file",
+                    "path": "turn-3/user_utils/__pycache__/users.cpython-313.pyc",
+                    "size": 6028,
+                    "extension": "pyc"
+                  }
+                ]
+              },
+              {
+                "name": "test_users.py",
+                "type": "file",
+                "path": "turn-3/user_utils/test_users.py",
+                "size": 14114,
+                "extension": "py"
+              },
+              {
+                "name": "users.py",
+                "type": "file",
+                "path": "turn-3/user_utils/users.py",
+                "size": 5410,
+                "extension": "py"
+              }
+            ]
+          },
+          {
+            "name": "weather-client",
+            "type": "folder",
+            "path": "turn-3/weather-client",
+            "children": [
+              {
+                "name": "src",
+                "type": "folder",
+                "path": "turn-3/weather-client/src",
+                "children": [
+                  {
+                    "name": "client.ts",
+                    "type": "file",
+                    "path": "turn-3/weather-client/src/client.ts",
+                    "size": 5057,
+                    "extension": "ts"
+                  },
+                  {
+                    "name": "errors.ts",
+                    "type": "file",
+                    "path": "turn-3/weather-client/src/errors.ts",
+                    "size": 664,
+                    "extension": "ts"
+                  },
+                  {
+                    "name": "index.ts",
+                    "type": "file",
+                    "path": "turn-3/weather-client/src/index.ts",
+                    "size": 253,
+                    "extension": "ts"
+                  },
+                  {
+                    "name": "rate-limiter.ts",
+                    "type": "file",
+                    "path": "turn-3/weather-client/src/rate-limiter.ts",
+                    "size": 2193,
+                    "extension": "ts"
+                  },
+                  {
+                    "name": "types.ts",
+                    "type": "file",
+                    "path": "turn-3/weather-client/src/types.ts",
+                    "size": 1102,
+                    "extension": "ts"
+                  }
+                ]
+              },
+              {
+                "name": "package.json",
+                "type": "file",
+                "path": "turn-3/weather-client/package.json",
+                "size": 315,
+                "extension": "json"
+              },
+              {
+                "name": "README.md",
+                "type": "file",
+                "path": "turn-3/weather-client/README.md",
+                "size": 3353,
+                "extension": "md"
+              },
+              {
+                "name": "tsconfig.json",
+                "type": "file",
+                "path": "turn-3/weather-client/tsconfig.json",
+                "size": 421,
+                "extension": "json"
+              }
+            ]
+          },
+          {
+            "name": "AGENTS.md",
+            "type": "file",
+            "path": "turn-3/AGENTS.md",
+            "size": 7869,
+            "extension": "md"
+          },
+          {
+            "name": "BOOTSTRAP.md",
+            "type": "file",
+            "path": "turn-3/BOOTSTRAP.md",
+            "size": 1681,
+            "extension": "md"
+          },
+          {
+            "name": "HEARTBEAT.md",
+            "type": "file",
+            "path": "turn-3/HEARTBEAT.md",
+            "size": 168,
+            "extension": "md"
+          },
+          {
+            "name": "IDENTITY.md",
+            "type": "file",
+            "path": "turn-3/IDENTITY.md",
+            "size": 635,
+            "extension": "md"
+          },
+          {
+            "name": "MEMORY.md",
+            "type": "file",
+            "path": "turn-3/MEMORY.md",
+            "size": 193,
+            "extension": "md"
+          },
+          {
+            "name": "SOUL.md",
+            "type": "file",
+            "path": "turn-3/SOUL.md",
+            "size": 1673,
+            "extension": "md"
+          },
+          {
+            "name": "TOOLS.md",
+            "type": "file",
+            "path": "turn-3/TOOLS.md",
+            "size": 860,
+            "extension": "md"
+          },
+          {
+            "name": "USER.md",
+            "type": "file",
+            "path": "turn-3/USER.md",
+            "size": 481,
+            "extension": "md"
+          }
+        ]
+      }
+    ]
+  },
+  "summary": {
+    "testId": "2.4",
+    "totalFiles": 278,
+    "totalSize": 963856,
+    "filesByExtension": {
+      "sample": 39,
+      "txt": 18,
+      "sql": 3,
+      "ts": 39,
+      "pyc": 55,
+      "py": 55,
+      "example": 3,
+      "yaml": 3,
+      "toml": 6,
+      "md": 30,
+      "js": 12,
+      "json": 15
+    },
+    "turns": [
+      {
+        "name": "turn-1",
+        "fileCount": 8
+      },
+      {
+        "name": "turn-2",
+        "fileCount": 8
+      },
+      {
+        "name": "turn-3",
+        "fileCount": 8
+      }
+    ]
+  }
+}

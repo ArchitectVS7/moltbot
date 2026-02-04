@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test 1.2 - Context Switching | OpenClaw VS7</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <h1>
+        <a href="../index.html" style="color: inherit;">OpenClaw VS7</a> / Test 1.2
+      </h1>
+      <p class="subtitle">Context Switching - Context Retention Test</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Mode Toggle -->
+    <div class="mode-toggle">
+      <button class="mode-btn baseline active" data-mode="baseline">
+        Baseline
+      </button>
+      <button class="mode-btn vs7" data-mode="vs7">
+        VS7
+      </button>
+    </div>
+
+    <!-- Test Specification -->
+    <section class="main-content">
+      <div id="test-spec" class="test-spec">
+        <div class="test-spec-header">
+          <div class="test-title-group">
+            <h1>
+              <span class="test-id">1.2</span>
+              Context Switching
+            </h1>
+            <p class="test-description">Tests if agent can recall details from two separate topics when asked to combine them</p>
+          </div>
+        </div>
+
+        <div class="turns-list">
+          <div class="turn-card">
+            <div class="turn-header">
+              <div class="turn-number">Turn 1</div>
+            </div>
+            <div class="turn-prompt">Explain how OAuth 2.0 authorization code flow works in 3-4 sentences.</div>
+            <div class="turn-expected">
+              <strong>Expected:</strong> Concise explanation covering: authorization request, user consent, authorization code exchange, access token
+            </div>
+          </div>
+          <div class="turn-card">
+            <div class="turn-header">
+              <div class="turn-number">Turn 2</div>
+            </div>
+            <div class="turn-prompt">Now explain WebSockets in 3-4 sentences.</div>
+            <div class="turn-expected">
+              <strong>Expected:</strong> Concise explanation covering: persistent connection, bidirectional communication, real-time updates
+            </div>
+          </div>
+          <div class="turn-card">
+            <div class="turn-header">
+              <div class="turn-number">Turn 3</div>
+            </div>
+            <div class="turn-prompt">How would you combine OAuth 2.0 and WebSockets for a real-time authenticated API? Reference your earlier explanations.</div>
+            <div class="turn-expected">
+              <strong>Expected:</strong> Solution that explicitly references OAuth flow from Turn 1 and WebSocket behavior from Turn 2, describes token passing in WebSocket handshake
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics Panel -->
+      <div id="metrics" class="metrics-panel">
+        <div class="metric">
+          <div class="metric-label">Files Generated</div>
+          <div class="metric-value"><span class="spinner"></span></div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Total Tokens</div>
+          <div class="metric-value"><span class="spinner"></span></div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Code Quality</div>
+          <div class="metric-value"><span class="spinner"></span></div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Tests Passed</div>
+          <div class="metric-value"><span class="spinner"></span></div>
+        </div>
+      </div>
+
+      <!-- Analysis -->
+      <div id="analysis"></div>
+    </section>
+
+    <!-- File Tree and Code Viewer Layout -->
+    <div class="test-layout mt-4">
+      <aside class="sidebar">
+        <h3>Files</h3>
+        <div id="file-tree" class="file-tree">
+          <div class="empty-state">
+            <div class="empty-state-icon">📁</div>
+            <p>Loading files...</p>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div id="code-viewer" class="code-viewer">
+          <div class="empty-state">
+            <div class="empty-state-icon">📄</div>
+            <p>Select a file to view its contents</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-go.min.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

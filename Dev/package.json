@@ -7,6 +7,10 @@
     "test:manual": "tsx src/test-runner.ts",
     "batch": "tsx src/batch-runner.ts",
     "dual": "tsx src/dual-runner.ts",
+    "auto": "tsx src/automated-runner.ts",
+    "simple": "tsx src/simple-toggle-test.ts",
+    "long": "tsx src/long-session-runner.ts",
+    "orchestrate": "tsx src/orchestrator.ts",
     "compare": "tsx src/compare-results.ts",
     "build": "tsc"
   },
@@ -22,5 +26,9 @@
     "@types/node": "^20.10.0",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@types/ws": "^8.18.1",
+    "ws": "^8.19.0"
   }
 }

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test 3.1 - Realistic Day Workflow | OpenClaw VS7</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <h1>
+        <a href="../index.html" style="color: inherit;">OpenClaw VS7</a> / Test 3.1
+      </h1>
+      <p class="subtitle">Realistic Day Workflow - Mixed Workload Test</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Mode Toggle -->
+    <div class="mode-toggle">
+      <button class="mode-btn baseline active" data-mode="baseline">
+        Baseline
+      </button>
+      <button class="mode-btn vs7" data-mode="vs7">
+        VS7
+      </button>
+    </div>
+
+    <!-- Test Specification -->
+    <section class="main-content">
+      <div id="test-spec" class="test-spec">
+        <div class="test-spec-header">
+          <div class="test-title-group">
+            <h1>
+              <span class="test-id">3.1</span>
+              Realistic Day Workflow
+            </h1>
+            <p class="test-description">Simulates a typical developer day with varied tasks and context switches</p>
+          </div>
+        </div>
+
+        <div class="turns-list">
+          <div class="turn-card">
+            <div class="turn-header">
+              <div class="turn-number">Turn 1</div>
+            </div>
+            <div class="turn-prompt">Good morning! I&#039;m working on a React e-commerce app today. First task: the shopping cart isn&#039;t persisting between page refreshes. Any quick ideas?</div>
+            <div class="turn-expected">
+              <strong>Expected:</strong> Suggests localStorage, sessionStorage, or state management solutions for cart persistence
+            </div>
+          </div>
+          <div class="turn-card">
+            <div class="turn-header">
+              <div class="turn-number">Turn 2</div>
+            </div>
+            <div class="turn-prompt">Good idea, let&#039;s use localStorage. Write the hook for that.</div>
+            <div class="turn-expected">
+              <strong>Expected:</strong> Creates useLocalStorage or usePersistedCart hook with proper serialization
+            </div>
+          </div>
+          <div class="turn-card">
+            <div class="turn-header">
+              <div class="turn-number">Turn 3</div>
+            </div>
+            <div class="turn-prompt">Quick detour - my teammate needs help. What&#039;s the difference between useCallback and useMemo?</div>
+            <div class="turn-expected">
+              <strong>Expected:</strong> Explains: useCallback memoizes functions, useMemo memoizes values, gives examples
+            </div>
+          </div>
+          <div class="turn-card">
+            <div class="turn-header">
+              <div class="turn-number">Turn 4</div>
+            </div>
+            <div class="turn-prompt">Back to my cart. The hook works but I need to also sync it with the backend API when the user is logged in. How should I modify it?</div>
+            <div class="turn-expected">
+              <strong>Expected:</strong> Suggests combining localStorage with API sync, may use useEffect for sync, references the hook from Turn 2
+            </div>
+          </div>
+          <div class="turn-card">
+            <div class="turn-header">
+              <div class="turn-number">Turn 5</div>
+            </div>
+            <div class="turn-prompt">Perfect. Now completely different topic - I need to write a bash script to backup our PostgreSQL database daily. Can you help?</div>
+            <div class="turn-expected">
+              <strong>Expected:</strong> Writes pg_dump script with date formatting, compression, retention policy
+            </div>
+          </div>
+          <div class="turn-card">
+            <div class="turn-header">
+              <div class="turn-number">Turn 6</div>
+            </div>
+            <div class="turn-prompt">Last thing - summarize what we worked on today.</div>
+            <div class="turn-expected">
+              <strong>Expected:</strong> Lists: cart persistence hook, useCallback/useMemo explanation, cart API sync, database backup script
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics Panel -->
+      <div id="metrics" class="metrics-panel">
+        <div class="metric">
+          <div class="metric-label">Files Generated</div>
+          <div class="metric-value"><span class="spinner"></span></div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Total Tokens</div>
+          <div class="metric-value"><span class="spinner"></span></div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Code Quality</div>
+          <div class="metric-value"><span class="spinner"></span></div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Tests Passed</div>
+          <div class="metric-value"><span class="spinner"></span></div>
+        </div>
+      </div>
+
+      <!-- Analysis -->
+      <div id="analysis"></div>
+    </section>
+
+    <!-- File Tree and Code Viewer Layout -->
+    <div class="test-layout mt-4">
+      <aside class="sidebar">
+        <h3>Files</h3>
+        <div id="file-tree" class="file-tree">
+          <div class="empty-state">
+            <div class="empty-state-icon">📁</div>
+            <p>Loading files...</p>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div id="code-viewer" class="code-viewer">
+          <div class="empty-state">
+            <div class="empty-state-icon">📄</div>
+            <p>Select a file to view its contents</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-go.min.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

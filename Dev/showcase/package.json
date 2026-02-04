@@ -1,0 +1,26 @@
+{
+  "name": "openclaw-vs7-showcase",
+  "version": "1.0.0",
+  "description": "Interactive web showcase for OpenClaw VS7 test results",
+  "type": "module",
+  "scripts": {
+    "start": "node start-server.js",
+    "build:pages": "node generate-pages.js",
+    "build:index": "node build-file-index.js",
+    "build:all": "npm run build:pages && npm run build:index",
+    "rebuild": "npm run build:all && npm start",
+    "verify": "node verify.js"
+  },
+  "keywords": [
+    "openclaw",
+    "vs7",
+    "test-results",
+    "showcase",
+    "web-app"
+  ],
+  "author": "OpenClaw Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

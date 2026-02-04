@@ -1,0 +1,147 @@
+{
+  "timestamp": 1738598400000,
+  "analysisValid": true,
+  "webShowcaseValid": true,
+  "testsRun": {
+    "total": 15,
+    "passed": 14,
+    "failed": 0,
+    "skipped": 1
+  },
+  "issues": [
+    {
+      "severity": "error",
+      "message": "VS7 context pollution: Severe workspace isolation failure with 140% more files than baseline across all tests",
+      "location": "All VS7 test executions"
+    },
+    {
+      "severity": "warning",
+      "message": "Test 1.3 (VS7): MEMORY.md pre-existed, indicating contaminated test environment",
+      "location": "Dev/analysis/output/group-1-analysis.json - Test 1.3"
+    },
+    {
+      "severity": "warning",
+      "message": "Test 1.4 (VS7): Auth files pre-existed, test failed to generate requested code",
+      "location": "Dev/analysis/output/group-1-analysis.json - Test 1.4"
+    },
+    {
+      "severity": "warning",
+      "message": "Test 1.5 (VS7): User class pre-existed, test validity compromised",
+      "location": "Dev/analysis/output/group-1-analysis.json - Test 1.5"
+    },
+    {
+      "severity": "warning",
+      "message": "VS7 token overhead averages 10.3% (437,452 extra tokens) due to context pollution",
+      "location": "Dev/analysis/output/aggregated-report.json - overallMetrics"
+    },
+    {
+      "severity": "info",
+      "message": "6 of 15 tests were conceptual/architectural without executable code (expected)",
+      "location": "Tests 1.2, 1.3, some turns in others"
+    },
+    {
+      "severity": "info",
+      "message": "Final report exists but not integrated into web showcase navigation",
+      "location": "Dev/analysis/output/final-report.md"
+    }
+  ],
+  "recommendations": [
+    "CRITICAL: Implement workspace cleanup mechanism in VS7 to prevent artifact accumulation between tests",
+    "Add workspace validation checks before test execution to ensure clean environments",
+    "Integrate final-report.md into web showcase navigation for completeness",
+    "Add automated JSON schema validation in CI/CD pipeline",
+    "Consider adding test execution automation to verify code actually runs",
+    "Implement context size monitoring to detect pollution early",
+    "Add unit tests to more test deliverables as standard practice",
+    "Create visual diff tool in web showcase to highlight baseline vs VS7 differences",
+    "Add metrics tracking dashboard to web showcase for trend analysis",
+    "Document workspace isolation mechanism to prevent future contamination"
+  ],
+  "validationDetails": {
+    "analysisFiles": {
+      "group1": {
+        "path": "Dev/analysis/output/group-1-analysis.json",
+        "valid": true,
+        "lines": 1573,
+        "testsCount": 5,
+        "issues": []
+      },
+      "group2": {
+        "path": "Dev/analysis/output/group-2-analysis.json",
+        "valid": true,
+        "lines": 842,
+        "testsCount": 5,
+        "issues": []
+      },
+      "group3": {
+        "path": "Dev/analysis/output/group-3-analysis.json",
+        "valid": true,
+        "lines": 821,
+        "testsCount": 5,
+        "issues": []
+      },
+      "aggregated": {
+        "path": "Dev/analysis/output/aggregated-report.json",
+        "valid": true,
+        "lines": 339,
+        "issues": []
+      },
+      "finalReport": {
+        "path": "Dev/analysis/output/final-report.md",
+        "exists": true,
+        "type": "markdown"
+      }
+    },
+    "webShowcase": {
+      "indexHtml": {
+        "path": "Dev/showcase/index.html",
+        "valid": true,
+        "hasDoctype": true,
+        "hasPrismCDN": true,
+        "issues": []
+      },
+      "testPages": {
+        "total": 15,
+        "verified": 15,
+        "missing": [],
+        "sampleChecked": "test-1.1.html"
+      },
+      "assets": {
+        "css": {
+          "path": "Dev/showcase/assets/css/styles.css",
+          "valid": true,
+          "hasCSSVariables": true
+        },
+        "js": {
+          "path": "Dev/showcase/assets/js/app.js",
+          "valid": true,
+          "hasShowcaseApp": true
+        }
+      },
+      "dataFiles": {
+        "indexJson": "Dev/showcase/data/index.json",
+        "baselineFiles": 15,
+        "vs7Files": 15
+      }
+    },
+    "testExecution": {
+      "pythonTests": {
+        "found": 3,
+        "files": [
+          "test_user_repository.py",
+          "test_user_processing.py",
+          "test_duplicates.py"
+        ],
+        "syntaxValid": true
+      },
+      "typescriptProjects": {
+        "found": 5,
+        "hasPackageJson": true
+      },
+      "goProjects": {
+        "found": 1,
+        "hasGoMod": true
+      }
+    }
+  }
+}
