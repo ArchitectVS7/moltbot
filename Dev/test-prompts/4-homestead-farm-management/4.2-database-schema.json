@@ -1,0 +1,38 @@
+{
+  "id": "4.2",
+  "name": "Database Schema & Models",
+  "category": "homestead-farm-management",
+  "description": "Design and implement the comprehensive database schema for all homestead management features",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Now let's design the database schema for HomesteadHub. We need tables for: Users (with roles), FoodInventory (name, category, quantity, unit, purchaseDate, expirationDate, storageLocation, rotationPriority), GardenPlots (name, size, soilType), Plants (species, variety, plantedDate, expectedHarvest, status), Equipment (name, type, purchaseDate, lastMaintenance, nextMaintenance, status), and Livestock (species, breed, birthDate, healthStatus, notes). Create the Prisma schema.",
+      "expectedBehavior": "Creates schema.prisma with all tables, proper relations, enums for status fields, and appropriate field types including DateTime for dates"
+    },
+    {
+      "number": 2,
+      "prompt": "Extend the schema to include: Tasks (title, description, priority, dueDate, frequency enum: daily/weekly/monthly/quarterly/annual, category, status, assignedTo), Resources (type: water/fuel/seeds/feed, quantity, unit, lastUpdated, minimumThreshold), WeatherLogs (date, temperature, humidity, precipitation, windSpeed, notes), and EmergencyChecklists (name, category, items as JSON array, lastReviewed). Make sure Tasks can be linked to Equipment, Plants, or Livestock for maintenance reminders.",
+      "expectedBehavior": "Extends schema with new tables, implements polymorphic relation for Tasks using optional foreign keys to Equipment/Plants/Livestock, uses Json type for checklist items"
+    },
+    {
+      "number": 3,
+      "prompt": "Create the Prisma client configuration and a seed file that populates the database with sample data: 3 users (admin, farmer, viewer), 10 food inventory items with realistic expiration dates, 2 garden plots with 5 plants each, 3 pieces of equipment, 5 livestock entries, and some sample tasks across different frequencies.",
+      "expectedBehavior": "Creates src/lib/prisma.ts client, prisma/seed.ts with realistic sample data including proper date handling and all required relations"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Complete Prisma schema with all tables, relations, and seed data",
+      "validation": "schema.prisma validates with prisma validate, seed.ts creates interconnected data"
+    },
+    "contextRetained": {
+      "description": "Schema matches all requirements from Turn 1 and Turn 2, seed data covers all entity types",
+      "validation": "All mentioned fields present, proper types used, relations correctly defined"
+    },
+    "codeWorks": {
+      "description": "Prisma schema is valid, seed script is syntactically correct TypeScript",
+      "validation": "npx prisma validate succeeds, tsc compiles seed file"
+    }
+  },
+  "estimatedDuration": "8-10 minutes"
+}

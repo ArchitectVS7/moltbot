@@ -1,0 +1,43 @@
+{
+  "id": "4.7",
+  "name": "Task Scheduling System",
+  "category": "homestead-farm-management",
+  "description": "Implement the comprehensive task management system with recurring tasks and multiple time frequencies",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Build the Task module API for HomesteadHub. Tasks have: title, description, priority (1-5, 1=urgent), dueDate, frequency (once, daily, weekly, monthly, quarterly, annual), category (garden, livestock, equipment, inventory, general), status (pending, in-progress, completed, skipped), and optional links to equipmentId, plantId, or livestockId. Create CRUD routes with filtering by frequency, category, status, and date range.",
+      "expectedBehavior": "Creates src/app/api/tasks routes with full CRUD, complex filtering logic, proper handling of optional polymorphic relations"
+    },
+    {
+      "number": 2,
+      "prompt": "Create a task list page at /tasks with multiple view modes: list view (sortable table), board view (Kanban by status), and timeline view (grouped by due date). Include quick filters for today, this week, overdue, and by category. Allow inline status updates and priority changes.",
+      "expectedBehavior": "Creates src/app/tasks/page.tsx with three view modes using tabs or toggle, filter buttons, inline editing with optimistic updates, proper state management"
+    },
+    {
+      "number": 3,
+      "prompt": "Implement recurring task logic. When a recurring task is marked complete, automatically generate the next occurrence based on frequency. For example, a weekly task completed on Monday should create a new task due next Monday. Store original task as template, link generated tasks. Handle edge cases like monthly tasks on the 31st.",
+      "expectedBehavior": "Creates recurring task generation logic, handles next occurrence calculation for all frequencies, stores templateTaskId for linked instances, edge case handling for month-end dates"
+    },
+    {
+      "number": 4,
+      "prompt": "Build a task creation wizard at /tasks/new that guides through: 1) Basic info (title, description), 2) Scheduling (one-time vs recurring, frequency selection, start date), 3) Categorization (category, priority, optional equipment/plant/livestock link), 4) Review and create. Include templates for common homestead tasks like 'Check water levels', 'Collect eggs', 'Rotate food stock'.",
+      "expectedBehavior": "Creates multi-step wizard form with progress indicator, template quick-start options with pre-filled values, validation at each step, final review before submission"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Full task system with views, recurring logic, and creation wizard",
+      "validation": "All view modes work, recurring tasks generate correctly, wizard completes task creation"
+    },
+    "contextRetained": {
+      "description": "Tasks link to equipment/plants/livestock from previous modules, uses consistent patterns",
+      "validation": "Foreign keys match schema, UI patterns consistent with inventory/garden/equipment"
+    },
+    "codeWorks": {
+      "description": "Recurring date calculations handle all frequencies correctly including edge cases",
+      "validation": "TypeScript compiles, date-fns or similar used for reliable date math"
+    }
+  },
+  "estimatedDuration": "11-13 minutes"
+}

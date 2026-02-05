@@ -1,0 +1,43 @@
+{
+  "id": "4.11",
+  "name": "Resource Tracking",
+  "category": "homestead-farm-management",
+  "description": "Build the resource usage tracking system for water, fuel, seeds, feed, and other consumables",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Create the Resources module for HomesteadHub. Resources track consumables with: id, name, type (water, fuel, seeds, feed, fertilizer, other), currentQuantity, unit, minimumThreshold (for alerts), maximumCapacity, costPerUnit, lastUpdated, and location. Also create a ResourceLog table for tracking usage: resourceId, date, quantityChange (positive for additions, negative for usage), reason, performedBy. Build CRUD routes.",
+      "expectedBehavior": "Updates schema.prisma with Resources and ResourceLog tables, creates API routes for both with proper relations, usage logging creates ResourceLog entries and updates currentQuantity"
+    },
+    {
+      "number": 2,
+      "prompt": "Build the resource dashboard at /resources showing all resources as gauge cards. Each card shows: resource name with icon, current level vs capacity as a visual gauge (like a fuel gauge), percentage full, estimated days until empty based on recent usage rate, and status indicator (green if > 50%, yellow if 25-50%, red if < 25% or below threshold).",
+      "expectedBehavior": "Creates src/app/resources/page.tsx with gauge card components, usage rate calculation from ResourceLog history, color-coded status, days-until-empty estimate"
+    },
+    {
+      "number": 3,
+      "prompt": "Create a resource usage logging interface. Add quick-log buttons on each resource card for common operations (e.g., 'Filled tank', 'Daily usage', 'Purchased'). Create a detailed log form for specifying exact amounts, costs, and reasons. Show recent log entries in a collapsible section on each card.",
+      "expectedBehavior": "Creates quick-log UI with common presets, detailed log form modal, recent entries display, all actions update both ResourceLog and Resource.currentQuantity"
+    },
+    {
+      "number": 4,
+      "prompt": "Add a resource planning view at /resources/planning that shows: monthly usage trends as charts for each resource type, projected needs for the next quarter based on historical usage, cost analysis (total spent per resource, average monthly cost), and a shopping list generator that shows what needs to be purchased based on thresholds and projected needs.",
+      "expectedBehavior": "Creates planning page with Recharts trend graphs, usage projection algorithm, cost summaries, auto-generated shopping list with quantities and estimated costs"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Complete resource system with tracking, logging, gauges, and planning",
+      "validation": "Gauges reflect current levels, logging updates quantities, projections calculate correctly"
+    },
+    "contextRetained": {
+      "description": "Resources link to alerts system for threshold warnings, uses consistent card styling",
+      "validation": "Low resources trigger alerts from 4.9, UI matches other modules"
+    },
+    "codeWorks": {
+      "description": "Usage rate calculations handle varying intervals, projections are reasonable",
+      "validation": "TypeScript compiles, mathematical calculations verified"
+    }
+  },
+  "estimatedDuration": "10-12 minutes"
+}

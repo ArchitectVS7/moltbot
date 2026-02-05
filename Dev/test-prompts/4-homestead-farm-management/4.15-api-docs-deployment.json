@@ -1,0 +1,43 @@
+{
+  "id": "4.15",
+  "name": "API Documentation & Deployment",
+  "category": "homestead-farm-management",
+  "description": "Document the API, add end-to-end tests, and prepare HomesteadHub for production deployment",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Create API documentation for HomesteadHub using OpenAPI/Swagger. Document all endpoints we've built: inventory, garden, equipment, tasks, resources, weather, alerts, calendar, search. Include request/response schemas, authentication requirements, and example payloads. Generate an interactive docs page at /api/docs using swagger-ui-react.",
+      "expectedBehavior": "Creates OpenAPI spec in openapi.yaml or generates from route handlers, documents all endpoints with proper schemas, creates /api/docs page with Swagger UI"
+    },
+    {
+      "number": 2,
+      "prompt": "Write end-to-end tests using Playwright covering critical user journeys: 1) Login and navigate to dashboard, 2) Add and edit an inventory item, 3) Create a recurring task and mark it complete (verify next occurrence created), 4) Log resource usage and verify gauge updates, 5) Use global search to find an item. Create test fixtures for seed data.",
+      "expectedBehavior": "Creates e2e test files in tests/ directory, test fixtures with seed data setup/teardown, covers all 5 user journeys with assertions"
+    },
+    {
+      "number": 3,
+      "prompt": "Create deployment configuration for self-hosting. HomesteadHub is designed for local/private network use. Create: Docker Compose file with Next.js app and PostgreSQL containers, environment variable template (.env.example), database backup script, and a setup guide for first-time installation on a Raspberry Pi or home server.",
+      "expectedBehavior": "Creates docker-compose.yml, Dockerfile, .env.example with all needed vars, backup.sh script, DEPLOYMENT.md with step-by-step setup guide"
+    },
+    {
+      "number": 4,
+      "prompt": "Final polish: add a settings page at /settings for app configuration (farm name, timezone, default units metric/imperial, backup schedule), create an about page with version info and system status (database connection, disk space, last backup), and add a data export feature that creates a full JSON backup of all user data.",
+      "expectedBehavior": "Creates settings page with configuration form, about page with system stats, JSON export endpoint and UI button, all settings persist and affect app behavior"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "API documented, E2E tests passing, deployment ready, settings and export working",
+      "validation": "Swagger docs render, Playwright tests pass, Docker build succeeds, export produces valid JSON"
+    },
+    "contextRetained": {
+      "description": "Documentation covers all endpoints from entire project, tests verify features from all modules",
+      "validation": "OpenAPI spec complete, tests touch inventory/tasks/resources/search functionality"
+    },
+    "codeWorks": {
+      "description": "All tests pass, Docker containers start and connect, backup/restore functions correctly",
+      "validation": "npm run test:e2e passes, docker-compose up creates working app, export can be re-imported"
+    }
+  },
+  "estimatedDuration": "12-15 minutes"
+}

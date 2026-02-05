@@ -1,0 +1,43 @@
+{
+  "id": "4.10",
+  "name": "Weather Dashboard",
+  "category": "homestead-farm-management",
+  "description": "Implement weather tracking with manual logging, historical data, and growing condition analysis",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Create the Weather module for HomesteadHub. Since this might run offline, support both manual weather logging and optional API integration. Build API routes at /api/weather for WeatherLogs: date, temperatureHigh, temperatureLow, humidity, precipitation (inches), windSpeed, conditions (sunny, cloudy, rainy, stormy, snowy), notes. Include a route to fetch from OpenWeatherMap API if configured (check for API key in env).",
+      "expectedBehavior": "Creates weather API routes, manual entry support, conditional OpenWeatherMap integration with graceful fallback if no API key"
+    },
+    {
+      "number": 2,
+      "prompt": "Build the weather dashboard at /weather with: current conditions card (today's entry or API data), 7-day history chart showing temperature range and precipitation, monthly summary statistics (average temps, total precipitation, growing degree days calculation). Use a charting library like Recharts.",
+      "expectedBehavior": "Creates src/app/weather/page.tsx with current conditions display, Recharts line/bar chart for history, monthly stats calculation including GDD"
+    },
+    {
+      "number": 3,
+      "prompt": "Add a manual weather logging form that's easy to fill out daily. Include presets for common conditions, auto-fill from yesterday's data as starting point, and a quick-log button on the dashboard. Also add a historical data import feature for CSV files with date, high, low, precipitation columns.",
+      "expectedBehavior": "Creates quick-log form with presets, yesterday's data prefill, CSV import with validation and preview before committing"
+    },
+    {
+      "number": 4,
+      "prompt": "Create a growing conditions analyzer that: calculates frost-free days, tracks growing degree days (GDD) for common crops, predicts first/last frost based on historical data, and shows which plants are in danger when temperature drops below 32F. Integrate this with the Garden module to show warnings on plant cards.",
+      "expectedBehavior": "Creates GrowingConditions component/service with frost calculations, GDD tracking, frost prediction algorithm, integration with plant display showing frost warnings"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Weather system with logging, dashboard, charts, and growing analysis",
+      "validation": "Manual logging works, charts display correctly, GDD calculates properly"
+    },
+    "contextRetained": {
+      "description": "Weather integrates with Garden module for frost warnings, uses consistent theming",
+      "validation": "Plant cards show frost warnings, charts use earthy color scheme"
+    },
+    "codeWorks": {
+      "description": "GDD calculation is accurate, frost prediction uses sound algorithm",
+      "validation": "TypeScript compiles, math calculations verified against known formulas"
+    }
+  },
+  "estimatedDuration": "10-12 minutes"
+}

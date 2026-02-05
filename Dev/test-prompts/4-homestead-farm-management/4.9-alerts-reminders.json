@@ -1,0 +1,43 @@
+{
+  "id": "4.9",
+  "name": "Alerts & Reminders",
+  "category": "homestead-farm-management",
+  "description": "Build a notification system for expiring inventory, overdue tasks, upcoming maintenance, and critical alerts",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Create an Alert system for HomesteadHub. Add an Alerts table to Prisma: id, type (inventory-expiring, task-overdue, maintenance-due, resource-low, weather-warning, custom), severity (info, warning, critical), title, message, sourceType, sourceId, isRead, isDismissed, createdAt, expiresAt. Create API routes for CRUD and batch operations (mark all read, dismiss all).",
+      "expectedBehavior": "Updates schema.prisma with Alerts table, creates src/app/api/alerts routes with full CRUD plus batch endpoints, proper indexing for quick queries"
+    },
+    {
+      "number": 2,
+      "prompt": "Build a background job system (can be a Next.js API route triggered by cron) that runs daily and generates alerts: inventory expiring within 7 days (warning) or 3 days (critical), tasks overdue (warning) or overdue by 3+ days (critical), equipment maintenance overdue (critical), resources below minimum threshold (warning). Avoid duplicate alerts for the same source.",
+      "expectedBehavior": "Creates src/app/api/cron/generate-alerts/route.ts with all alert generation logic, deduplication check by sourceType+sourceId+type, severity escalation logic"
+    },
+    {
+      "number": 3,
+      "prompt": "Create an alerts UI: a notification bell icon in the header showing unread count with badge, a dropdown panel showing recent alerts grouped by severity, and a full /alerts page with filtering and bulk actions. Clicking an alert navigates to the source item. Critical alerts should pulse.",
+      "expectedBehavior": "Creates NotificationBell component for header, AlertsDropdown with grouped display, src/app/alerts/page.tsx with filters, navigation on click, CSS pulse animation for critical"
+    },
+    {
+      "number": 4,
+      "prompt": "Add user notification preferences. Create a settings page at /settings/notifications where users can configure: which alert types to receive, severity threshold (e.g., only warning and above), advance notice days for expiration/maintenance alerts, and quiet hours when alerts shouldn't show as popups. Store in user preferences.",
+      "expectedBehavior": "Creates notification preferences schema/storage, src/app/settings/notifications/page.tsx with preference forms, alert generation respects these settings"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Complete alert system with generation, UI, and user preferences",
+      "validation": "Alerts generate correctly, bell shows count, preferences affect alert behavior"
+    },
+    "contextRetained": {
+      "description": "Alerts reference items from inventory, tasks, equipment, resources modules",
+      "validation": "Source links work, thresholds match values from earlier modules"
+    },
+    "codeWorks": {
+      "description": "Alert generation handles all cases, no duplicate alerts created",
+      "validation": "TypeScript compiles, deduplication logic prevents duplicates"
+    }
+  },
+  "estimatedDuration": "10-12 minutes"
+}

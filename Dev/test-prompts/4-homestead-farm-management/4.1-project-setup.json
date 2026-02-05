@@ -1,0 +1,38 @@
+{
+  "id": "4.1",
+  "name": "Project Setup & Tech Stack",
+  "category": "homestead-farm-management",
+  "description": "Initialize the Homestead & Farm Management application with a modern full-stack setup for an engineer-farmer-survivalist",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "I'm building a Homestead & Farm Management application called 'HomesteadHub'. It's for an engineer-farmer-survivalist who needs to track: emergency food storage with expiration dates, garden planting calendars, equipment maintenance, livestock, weather data, daily/weekly/monthly/quarterly/annual tasks, resource usage (water, fuel, seeds, feed), and emergency preparedness checklists. Let's use TypeScript with Next.js 14 (App Router), PostgreSQL with Prisma, and Tailwind CSS. What's the best project structure?",
+      "expectedBehavior": "Acknowledges the comprehensive scope, suggests a well-organized project structure with src/app routes, components, lib, types, and discusses module organization for the various features"
+    },
+    {
+      "number": 2,
+      "prompt": "Great, let's initialize the project. Create the package.json with all dependencies, tsconfig.json, tailwind.config.ts, and the basic Next.js app structure with a professional landing page that shows the app name and lists all planned features.",
+      "expectedBehavior": "Creates package.json with next, react, prisma, tailwindcss, etc. Creates proper configs and a src/app/page.tsx landing page mentioning HomesteadHub and listing all the planned features"
+    },
+    {
+      "number": 3,
+      "prompt": "Now create the basic layout component with a responsive sidebar navigation that includes links to: Dashboard, Inventory (Food Storage), Garden, Equipment, Livestock, Tasks, Resources, Weather, and Emergency Prep. Use a dark earthy color scheme appropriate for a homesteading app.",
+      "expectedBehavior": "Creates src/app/layout.tsx and a Sidebar component with all navigation links, implements responsive design with Tailwind, uses earth tones (greens, browns, ambers)"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Project initialized with all config files, landing page, and navigation layout",
+      "validation": "package.json, tsconfig.json, tailwind.config.ts, layout.tsx, and page.tsx exist with correct content"
+    },
+    "contextRetained": {
+      "description": "App name 'HomesteadHub' used consistently, all 9 feature modules referenced",
+      "validation": "Landing page and navigation both reference HomesteadHub and all planned features"
+    },
+    "codeWorks": {
+      "description": "TypeScript compiles, Next.js app structure is valid",
+      "validation": "npx tsc --noEmit passes, files follow Next.js 14 App Router conventions"
+    }
+  },
+  "estimatedDuration": "6-8 minutes"
+}

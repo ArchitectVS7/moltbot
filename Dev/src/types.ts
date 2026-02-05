@@ -1,4 +1,82 @@
 /**
+ * WebSocket API types
+ */
+
+// Agent lifecycle event data
+export interface AgentLifecycleEvent {
+  phase: 'start' | 'end' | 'error';
+  runId?: string;
+  error?: string;
+}
+
+// Agent wait response
+export interface AgentWaitResponse {
+  status: 'ok' | 'error' | 'timeout';
+  runId: string;
+  error?: string;
+}
+
+// Session metadata from sessions.list API
+export interface SessionMetadata {
+  sessionKey: string;
+  agentId: string;
+  createdAt: string;
+  updatedAt: string;
+  totalTokens: number;
+  inputTokens: number;
+  outputTokens: number;
+  cacheCreationTokens?: number;
+  cacheReadTokens?: number;
+  messageCount: number;
+}
+
+// Extended token usage with cache metrics
+export interface TokenUsage {
+  total: number;
+  input: number;
+  output: number;
+  cacheCreation?: number;
+  cacheRead?: number;
+}
+
+// Chat event from WebSocket stream
+export interface ChatEvent {
+  runId: string;
+  sessionKey: string;
+  seq: number;
+  state: 'delta' | 'final' | 'aborted' | 'error';
+  message?: any;
+  errorMessage?: string;
+  usage?: {
+    input_tokens?: number;
+    output_tokens?: number;
+    cache_creation_input_tokens?: number;
+    cache_read_input_tokens?: number;
+  };
+  stopReason?: string;
+}
+
+// WebSocket response frame
+export interface ResponseFrame {
+  ok: boolean;
+  id: string;
+  result?: any;
+  error?: { message: string; code?: string };
+  payload?: any;
+  status?: string;
+}
+
+// WebSocket event frame
+export interface EventFrame {
+  event: string;
+  payload?: {
+    stream?: string;
+    data?: any;
+  };
+  data?: ChatEvent;
+}
+
+/**
  * Test prompt structure
  */
 export interface TestTurn {
@@ -35,9 +113,13 @@ export interface TurnMetrics {
   agentResponse: string;
   tokensUsed: {
     total: number;
+    input?: number;
+    output?: number;
     bootstrap?: number;
     history?: number;
     system?: number;
+    cacheCreation?: number;
+    cacheRead?: number;
   };
   responseTimeMs: number;
   timestamp: string;

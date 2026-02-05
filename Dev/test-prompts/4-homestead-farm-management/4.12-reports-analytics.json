@@ -1,0 +1,43 @@
+{
+  "id": "4.12",
+  "name": "Reports & Analytics",
+  "category": "homestead-farm-management",
+  "description": "Create comprehensive reporting and analytics dashboards for homestead performance insights",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Build a main Dashboard page at /dashboard (this should be the landing page after login) for HomesteadHub. Show key metrics cards: inventory items expiring soon (count), tasks due today (count), equipment needing maintenance (count), resources below threshold (count), garden harvest ready (count), and weather summary. Each card links to its respective module.",
+      "expectedBehavior": "Creates src/app/dashboard/page.tsx with metric cards fetching from respective APIs, click-to-navigate, real-time counts, update redirect after login"
+    },
+    {
+      "number": 2,
+      "prompt": "Create a Reports page at /reports with pre-built report templates: 1) Monthly Activity Summary (tasks completed, maintenance performed, harvests, expenses), 2) Inventory Status Report (full inventory with expiration dates, rotation recommendations), 3) Equipment Cost Analysis (total maintenance costs per equipment, ROI calculation), 4) Garden Performance (yield per plant, success rate by variety). Allow date range selection.",
+      "expectedBehavior": "Creates reports page with template selection, date range picker, each report queries relevant data and formats into printable/exportable format"
+    },
+    {
+      "number": 3,
+      "prompt": "Add interactive analytics charts: 1) Task completion trend over time (line chart), 2) Resource usage comparison (stacked bar by resource type), 3) Expense breakdown (pie chart by category), 4) Garden yield timeline (area chart by month). Use Recharts with responsive design. Allow exporting charts as PNG.",
+      "expectedBehavior": "Creates Analytics section with Recharts components, chart-specific data aggregation, responsive layouts, PNG export using html-to-canvas or chart library feature"
+    },
+    {
+      "number": 4,
+      "prompt": "Implement PDF export for reports using @react-pdf/renderer or similar. Create a professional report template with: HomesteadHub header, report title and date range, formatted data tables, embedded charts as images, and summary/recommendations section. Add 'Export to PDF' button on each report.",
+      "expectedBehavior": "Creates PDF generation components, professional template matching app branding, tables and charts render correctly in PDF, download functionality works"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Dashboard with metrics, report templates, analytics charts, and PDF export",
+      "validation": "Dashboard shows accurate counts, reports generate correctly, PDFs download"
+    },
+    "contextRetained": {
+      "description": "Aggregates data from all modules built so far, calculations consistent with each module",
+      "validation": "Metrics match actual data, chart data aligns with module displays"
+    },
+    "codeWorks": {
+      "description": "Data aggregation queries are efficient, PDF generation completes without errors",
+      "validation": "TypeScript compiles, reports load within reasonable time"
+    }
+  },
+  "estimatedDuration": "11-13 minutes"
+}

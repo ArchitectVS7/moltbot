@@ -1,0 +1,43 @@
+{
+  "id": "4.8",
+  "name": "Calendar Integration",
+  "category": "homestead-farm-management",
+  "description": "Create a unified calendar view integrating tasks, maintenance, planting, and inventory rotation",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Build a unified Calendar page at /calendar for HomesteadHub that aggregates events from multiple sources: Tasks (by dueDate), Equipment maintenance (by nextMaintenance), Plant activities (planting, transplanting, harvest dates), and Food inventory (items expiring). Create an API route /api/calendar/events that returns all events for a date range with source type and color coding.",
+      "expectedBehavior": "Creates src/app/api/calendar/events/route.ts that queries all tables, normalizes into unified event format with type, title, date, color, and sourceId/sourceType for navigation"
+    },
+    {
+      "number": 2,
+      "prompt": "Create the calendar UI component using a month view with day cells. Each day shows event dots colored by type (green=garden, blue=tasks, orange=equipment, red=inventory expiration). Clicking a day opens a popover/modal showing all events for that day with links to the source item. Add navigation for month/year.",
+      "expectedBehavior": "Creates src/app/calendar/page.tsx and CalendarGrid component, color-coded event indicators, day click handler with event detail popover, month navigation controls"
+    },
+    {
+      "number": 3,
+      "prompt": "Add a week view and day view in addition to month view. Week view shows a time-blocked schedule if tasks have times, or a simple list per day. Day view shows detailed event cards. Add toggle buttons to switch between month/week/day views. Remember the user's preferred view in localStorage.",
+      "expectedBehavior": "Extends calendar with WeekView and DayView components, view toggle with active state, localStorage persistence for view preference, consistent event display across views"
+    },
+    {
+      "number": 4,
+      "prompt": "Implement drag-and-drop rescheduling for tasks on the calendar. When dragging a task to a new date, update its dueDate via API. For recurring tasks, ask if they want to reschedule just this instance or all future occurrences. Add visual feedback during drag operation.",
+      "expectedBehavior": "Implements drag-drop using dnd-kit or react-beautiful-dnd, API call on drop, modal for recurring task choice, drag preview and drop zone highlighting"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Unified calendar with multiple views, event aggregation, and drag-drop rescheduling",
+      "validation": "Calendar shows events from all sources, all views work, drag-drop updates database"
+    },
+    "contextRetained": {
+      "description": "Integrates data from inventory (4.4), garden (4.5), equipment (4.6), tasks (4.7)",
+      "validation": "Event colors match specified scheme, links navigate to correct detail pages"
+    },
+    "codeWorks": {
+      "description": "Drag-drop works smoothly, recurring task rescheduling handles both cases correctly",
+      "validation": "TypeScript compiles, date handling consistent across components"
+    }
+  },
+  "estimatedDuration": "10-12 minutes"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "4.14",
+  "name": "Mobile-Responsive UI",
+  "category": "homestead-farm-management",
+  "description": "Optimize HomesteadHub for mobile devices with responsive design and touch-friendly interfaces",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Audit and improve the mobile responsiveness of HomesteadHub. The sidebar should collapse to a hamburger menu on mobile. Create a bottom navigation bar for mobile with icons for: Dashboard, Tasks, Inventory, Garden, and More (opens full menu). Tables should become card lists on small screens. Review all pages and list what needs responsive fixes.",
+      "expectedBehavior": "Analyzes current components, creates MobileNav component with bottom bar, updates Sidebar with hamburger toggle, documents responsive improvements needed per page"
+    },
+    {
+      "number": 2,
+      "prompt": "Implement responsive table alternatives. Create a ResponsiveTable component that renders as a traditional table on desktop but switches to a stacked card layout on mobile (each row becomes a card with label: value pairs). Apply this to inventory list, task list, equipment list, and any other tables. Maintain sorting and filtering on mobile.",
+      "expectedBehavior": "Creates src/components/ResponsiveTable.tsx with breakpoint-based layout switching, card layout shows labels, updates all list pages to use this component"
+    },
+    {
+      "number": 3,
+      "prompt": "Optimize forms for mobile input. Ensure all form fields are appropriately sized (min 44px touch targets), date pickers work on mobile, dropdowns are easy to use on touch screens. Add a mobile-optimized quick-add floating action button (FAB) that opens a modal for common quick actions: log task completion, log resource usage, add inventory item.",
+      "expectedBehavior": "Reviews and updates form components for touch targets, creates QuickAddFAB component with action modal, mobile-friendly input styling"
+    },
+    {
+      "number": 4,
+      "prompt": "Add Progressive Web App (PWA) capabilities. Create a manifest.json with HomesteadHub branding, add service worker for offline caching of static assets and recent data, implement install prompt handling. The app should be installable on mobile home screens and work offline for viewing cached data (with sync when back online indicator).",
+      "expectedBehavior": "Creates public/manifest.json, service worker with caching strategy, offline indicator component, install prompt UI, icons for various device sizes"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Fully responsive design, mobile navigation, PWA installable",
+      "validation": "All pages usable on 375px width, FAB works, app installable via browser prompt"
+    },
+    "contextRetained": {
+      "description": "Mobile views maintain all functionality from desktop, consistent branding",
+      "validation": "All CRUD operations work on mobile, earthy theme preserved"
+    },
+    "codeWorks": {
+      "description": "Breakpoints work correctly, service worker registers, offline mode functions",
+      "validation": "TypeScript compiles, Lighthouse mobile score improves, PWA criteria met"
+    }
+  },
+  "estimatedDuration": "10-12 minutes"
+}

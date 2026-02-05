@@ -1,0 +1,23 @@
+{
+  "0889ba95-49aa-4b79-a1aa-4ffee9c617cf": {
+    "requestId": "0889ba95-49aa-4b79-a1aa-4ffee9c617cf",
+    "deviceId": "6b54ae70c72cd4529c978e99a7346af7e4817a91606ab121805d05fff8ad18f1",
+    "publicKey": "zlStCpIGVruFQrEgyorv8MZuALqX_TBdy1KTiLZyXck",
+    "displayName": "Sequential Toggle Runner",
+    "platform": "node",
+    "clientId": "test",
+    "clientMode": "test",
+    "role": "operator",
+    "roles": [
+      "operator"
+    ],
+    "scopes": [
+      "operator.read",
+      "operator.write"
+    ],
+    "remoteIp": "172.20.0.1",
+    "silent": false,
+    "isRepair": false,
+    "ts": 1770292189236
+  }
+}

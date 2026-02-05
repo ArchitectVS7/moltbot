@@ -10,6 +10,7 @@
     "auto": "tsx src/automated-runner.ts",
     "simple": "tsx src/simple-toggle-test.ts",
     "long": "tsx src/long-session-runner.ts",
+    "sequential": "tsx src/sequential-toggle-runner.ts",
     "orchestrate": "tsx src/orchestrator.ts",
     "compare": "tsx src/compare-results.ts",
     "build": "tsc"

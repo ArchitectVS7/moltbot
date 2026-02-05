@@ -1,0 +1,43 @@
+{
+  "id": "4.5",
+  "name": "Garden/Planting CRUD",
+  "category": "homestead-farm-management",
+  "description": "Implement the garden plot and plant management system with planting calendar functionality",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Create the Garden module for HomesteadHub. Build API routes for GardenPlots (/api/garden/plots) and Plants (/api/garden/plants) with full CRUD. Plants should be linked to plots. Include endpoints to get all plants in a specific plot and to bulk-update plant statuses (e.g., mark multiple as harvested).",
+      "expectedBehavior": "Creates API routes for both entities with proper relations, includes /api/garden/plots/[id]/plants endpoint, bulk update endpoint with transaction"
+    },
+    {
+      "number": 2,
+      "prompt": "Build the garden overview page at /garden showing a visual grid of all plots. Each plot should be a card showing: plot name, size, number of plants, and a mini status bar (green for healthy, yellow for needs attention, red for problems). Clicking a plot opens a detail view with all plants in that plot.",
+      "expectedBehavior": "Creates src/app/garden/page.tsx with responsive card grid, status aggregation logic, src/app/garden/[plotId]/page.tsx for detail view with plant list"
+    },
+    {
+      "number": 3,
+      "prompt": "Create a planting calendar component that shows a 12-month view. For each month, display which plants should be: started indoors (blue), transplanted (green), direct sown (brown), and harvested (gold). Base this on the expectedHarvest and plantedDate fields plus typical growing cycles. Allow clicking a month to see detailed planting tasks.",
+      "expectedBehavior": "Creates src/components/PlantingCalendar.tsx with 12-month grid, color-coded plant activities, uses plant data to calculate planting windows, modal or page for monthly detail"
+    },
+    {
+      "number": 4,
+      "prompt": "Add plant tracking forms: create new plant (with species autocomplete from common vegetables), update growth stage (seed, seedling, vegetative, flowering, fruiting, harvest-ready), log notes with dates, and record actual harvest amount. Include a plant health log for tracking issues.",
+      "expectedBehavior": "Creates forms with autocomplete, growth stage enum, notes system with timestamps, harvest logging, health issue tracker with common problems dropdown"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Complete garden system with plots, plants, calendar, and detailed tracking",
+      "validation": "API routes work, visual grid displays, calendar calculates correctly, all forms functional"
+    },
+    "contextRetained": {
+      "description": "Plants link to plots from schema, calendar uses dates from plant records, consistent UI",
+      "validation": "Relations match Prisma schema from 4.2, styling matches inventory module"
+    },
+    "codeWorks": {
+      "description": "Calendar calculations are accurate, status aggregation works correctly",
+      "validation": "TypeScript compiles, date logic handles edge cases"
+    }
+  },
+  "estimatedDuration": "10-12 minutes"
+}

@@ -1,0 +1,38 @@
+{
+  "id": "4.3",
+  "name": "Authentication System",
+  "category": "homestead-farm-management",
+  "description": "Implement secure authentication with role-based access control for the HomesteadHub application",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Let's implement authentication for HomesteadHub using NextAuth.js v5 (Auth.js). We need credentials-based login since this will run on a local network without internet. Create the auth configuration with JWT sessions, and update our User model in Prisma if needed to support password hashing with bcrypt.",
+      "expectedBehavior": "Creates src/lib/auth.ts with NextAuth config, credentials provider, JWT session strategy, updates schema.prisma to add password field to User"
+    },
+    {
+      "number": 2,
+      "prompt": "Create the login page at /login with a clean form (email, password), error handling for invalid credentials, and redirect to dashboard on success. Also create a registration page at /register for initial setup (admin only can register new users later). Style it with our earthy theme.",
+      "expectedBehavior": "Creates src/app/login/page.tsx and src/app/register/page.tsx with forms, client-side validation, server actions or API routes for auth, consistent earthy Tailwind styling"
+    },
+    {
+      "number": 3,
+      "prompt": "Implement role-based access control. We have three roles: ADMIN (full access), FARMER (can edit all farm data), and VIEWER (read-only access). Create a middleware that protects all routes except /login and /register, and utility functions to check permissions in server components and API routes.",
+      "expectedBehavior": "Creates middleware.ts for route protection, src/lib/permissions.ts with role checking utilities, demonstrates usage pattern for protecting server components"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Complete auth system with login, registration, RBAC, and route protection",
+      "validation": "Auth config, login/register pages, middleware, and permission utilities all present"
+    },
+    "contextRetained": {
+      "description": "Uses NextAuth v5 patterns, three roles consistently defined, earthy theme applied to auth pages",
+      "validation": "Login page uses same color scheme as layout, roles match seed data"
+    },
+    "codeWorks": {
+      "description": "TypeScript compiles, NextAuth config is valid, middleware exports correct",
+      "validation": "tsc passes, auth config follows NextAuth v5 patterns"
+    }
+  },
+  "estimatedDuration": "7-9 minutes"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "4.13",
+  "name": "Search & Filtering",
+  "category": "homestead-farm-management",
+  "description": "Implement global search functionality and advanced filtering across all HomesteadHub modules",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Create a global search API endpoint at /api/search that searches across all entities: inventory items, plants, equipment, livestock, tasks, and alerts. Search by name, title, description, and notes fields. Return results grouped by entity type with relevance scoring. Limit to top 10 per category for performance.",
+      "expectedBehavior": "Creates unified search endpoint querying all tables, results grouped by type, basic relevance scoring (exact match > starts with > contains), proper type safety for mixed results"
+    },
+    {
+      "number": 2,
+      "prompt": "Build a global search UI component: a search icon in the header that opens a command palette (like Cmd+K). Show results as grouped lists with entity type headers and icons. Clicking a result navigates to that item. Include keyboard navigation (arrow keys to move, Enter to select, Escape to close). Show recent searches.",
+      "expectedBehavior": "Creates SearchCommandPalette component, keyboard shortcut listener, grouped results display with icons, keyboard navigation logic, recent searches in localStorage"
+    },
+    {
+      "number": 3,
+      "prompt": "Add advanced filtering capabilities to each module's list view. Create a reusable FilterPanel component that accepts a schema of filterable fields and renders appropriate inputs (text, select, date range, number range, checkboxes for enums). Apply filters via URL params for shareable/bookmarkable filtered views.",
+      "expectedBehavior": "Creates src/components/FilterPanel.tsx with dynamic field rendering, URL param sync using nuqs or similar, works across inventory, tasks, equipment, garden pages"
+    },
+    {
+      "number": 4,
+      "prompt": "Implement saved filters (search presets). Users can save their current filter combination with a name, then quickly apply it later. Store saved filters per user in the database. Add a 'Saved Filters' dropdown next to each module's filter panel. Include some default presets like 'Expiring This Week', 'Overdue Tasks', 'Needs Maintenance'.",
+      "expectedBehavior": "Adds SavedFilters table to schema, API routes for user filter presets, UI for save/load/delete filters, default system presets seeded in database"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Global search, command palette, advanced filtering, and saved presets working",
+      "validation": "Search finds items across modules, filters apply correctly, presets save and load"
+    },
+    "contextRetained": {
+      "description": "Search indexes all entities from previous modules, filters match each module's field types",
+      "validation": "All entity types appear in search results, filter schemas match Prisma models"
+    },
+    "codeWorks": {
+      "description": "Search performs well, URL params sync correctly, keyboard navigation works",
+      "validation": "TypeScript compiles, search returns in < 500ms, filters persist on refresh"
+    }
+  },
+  "estimatedDuration": "10-12 minutes"
+}

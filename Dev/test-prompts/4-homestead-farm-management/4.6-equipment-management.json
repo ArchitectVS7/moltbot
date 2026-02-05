@@ -1,0 +1,43 @@
+{
+  "id": "4.6",
+  "name": "Equipment Management",
+  "category": "homestead-farm-management",
+  "description": "Build the farm equipment tracking system with maintenance scheduling and service history",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Create the Equipment module for HomesteadHub. Build API routes at /api/equipment with CRUD operations. Equipment has: name, type (tractor, mower, chainsaw, irrigation, hand-tool, vehicle, generator, other), purchaseDate, purchasePrice, lastMaintenance, nextMaintenance, maintenanceIntervalDays, status (operational, needs-maintenance, in-repair, retired), and notes. Include filtering by type and status.",
+      "expectedBehavior": "Creates src/app/api/equipment/route.ts and [id]/route.ts with full CRUD, filtering, proper TypeScript types matching schema"
+    },
+    {
+      "number": 2,
+      "prompt": "Build the equipment list page at /equipment showing a card grid view. Each card displays: equipment name with type icon, status badge (green/yellow/red), days until next maintenance, and last service date. Equipment overdue for maintenance should pulse with a subtle animation. Add a status filter dropdown.",
+      "expectedBehavior": "Creates src/app/equipment/page.tsx with card grid, status-colored badges, maintenance countdown calculation, CSS animation for overdue items, filter functionality"
+    },
+    {
+      "number": 3,
+      "prompt": "Create a maintenance log system. Add a MaintenanceLog table to Prisma (equipmentId, date, type: routine/repair/inspection, description, cost, partsUsed, performedBy, hoursSpent). Create API routes and a form to log maintenance. The equipment detail page should show full maintenance history with cost totals.",
+      "expectedBehavior": "Updates schema.prisma with MaintenanceLog, creates API routes, src/app/equipment/[id]/page.tsx with history display, maintenance log form, calculates total maintenance costs"
+    },
+    {
+      "number": 4,
+      "prompt": "Add a maintenance schedule dashboard at /equipment/schedule showing a timeline view of all upcoming maintenance across all equipment for the next 90 days. Group by week, show equipment name and maintenance type. Allow marking maintenance as complete directly from this view, which creates a log entry and updates nextMaintenance.",
+      "expectedBehavior": "Creates schedule page with 90-day timeline grouped by week, quick-complete action that creates MaintenanceLog and calculates next date from interval"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Complete equipment system with tracking, maintenance logs, and schedule dashboard",
+      "validation": "CRUD works, maintenance history tracks correctly, schedule shows upcoming maintenance"
+    },
+    "contextRetained": {
+      "description": "Equipment links to Tasks from 4.2 schema, uses auth for performedBy, consistent styling",
+      "validation": "MaintenanceLog relates to Equipment properly, UI matches other modules"
+    },
+    "codeWorks": {
+      "description": "Date calculations correct, maintenance completion updates all related fields",
+      "validation": "TypeScript compiles, interval calculations handle edge cases"
+    }
+  },
+  "estimatedDuration": "9-11 minutes"
+}

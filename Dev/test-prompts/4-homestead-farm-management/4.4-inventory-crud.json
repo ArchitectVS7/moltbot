@@ -1,0 +1,43 @@
+{
+  "id": "4.4",
+  "name": "Inventory/Storage CRUD",
+  "category": "homestead-farm-management",
+  "description": "Build the emergency food storage inventory management system with full CRUD operations",
+  "turns": [
+    {
+      "number": 1,
+      "prompt": "Create the Food Inventory module for HomesteadHub. Build API routes at /api/inventory with GET (list with filtering/pagination), POST (create), and individual item routes at /api/inventory/[id] with GET, PATCH, DELETE. Include filtering by category, storage location, and expiration date range. Use the Prisma client we set up earlier.",
+      "expectedBehavior": "Creates src/app/api/inventory/route.ts and src/app/api/inventory/[id]/route.ts with all CRUD operations, proper error handling, filtering logic, and pagination"
+    },
+    {
+      "number": 2,
+      "prompt": "Build the inventory list page at /inventory showing all food items in a table with columns: Name, Category, Quantity, Location, Expiration Date, Rotation Priority. Items expiring within 30 days should be highlighted in yellow, within 7 days in red. Add sorting by any column and a search box.",
+      "expectedBehavior": "Creates src/app/inventory/page.tsx with data table, conditional row coloring based on expiration proximity, sortable columns, search functionality, uses server components with client interactivity"
+    },
+    {
+      "number": 3,
+      "prompt": "Create add/edit forms for inventory items. The form should include: name, category (dropdown: grains, proteins, canned goods, freeze-dried, water, other), quantity with unit selector, purchase date (date picker), expiration date (required), storage location (dropdown from available locations), and rotation priority (1-5). Include form validation and toast notifications for success/error.",
+      "expectedBehavior": "Creates src/app/inventory/new/page.tsx and src/app/inventory/[id]/edit/page.tsx with forms, Zod validation schema, toast notifications, proper form state management"
+    },
+    {
+      "number": 4,
+      "prompt": "Add a special 'Rotation Dashboard' view at /inventory/rotation that shows items grouped by expiration month for the next 12 months, with a visual timeline. Include a 'First In, First Out' recommendation list showing what should be consumed next.",
+      "expectedBehavior": "Creates src/app/inventory/rotation/page.tsx with monthly grouping, visual timeline component (could be a horizontal bar chart or calendar view), FIFO recommendation algorithm"
+    }
+  ],
+  "successCriteria": {
+    "taskCompleted": {
+      "description": "Complete inventory system with API routes, list view, forms, and rotation dashboard",
+      "validation": "All routes functional, CRUD operations complete, rotation view provides FIFO recommendations"
+    },
+    "contextRetained": {
+      "description": "Uses Prisma client from 4.2, follows auth patterns from 4.3, maintains earthy theme",
+      "validation": "Imports from src/lib/prisma, consistent styling, expiration thresholds match spec"
+    },
+    "codeWorks": {
+      "description": "API routes return proper responses, pages render without errors",
+      "validation": "TypeScript compiles, Zod schemas validate correctly"
+    }
+  },
+  "estimatedDuration": "10-12 minutes"
+}
